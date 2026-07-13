@@ -336,6 +336,18 @@
             align-items: center;
         }
 
+        .hero-image img {
+            width: 100%;
+            max-width: 540px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            background: linear-gradient(145deg, var(--gray-200), var(--gray-300));
+        }
+
+        /* Fallback for missing images */
         .hero-image .img-placeholder {
             width: 100%;
             max-width: 540px;
@@ -459,7 +471,26 @@
         .product-card .img-placeholder {
             width: 100%;
             aspect-ratio: 3/4;
+            position: relative;
+            overflow: hidden;
             background: linear-gradient(145deg, var(--gray-200), #d1d5db);
+        }
+
+        .product-card .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .img-placeholder img {
+            transform: scale(1.03);
+        }
+
+        /* Fallback icon and label inside product image placeholder */
+        .product-card .img-placeholder .fallback {
+            position: absolute;
+            inset: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -468,15 +499,10 @@
             font-size: 0.8rem;
             text-align: center;
             padding: 20px;
-            position: relative;
-            transition: var(--transition);
+            background: linear-gradient(145deg, var(--gray-200), #d1d5db);
         }
 
-        .product-card:hover .img-placeholder {
-            background: linear-gradient(145deg, var(--gray-300), #b9bfc7);
-        }
-
-        .product-card .img-placeholder i {
+        .product-card .img-placeholder .fallback i {
             font-size: 2.8rem;
             margin-bottom: 10px;
             color: var(--gray-300);
@@ -494,6 +520,7 @@
             text-transform: uppercase;
             padding: 4px 14px;
             border-radius: 40px;
+            z-index: 2;
         }
 
         .product-card .img-placeholder .badge.sale {
@@ -821,6 +848,7 @@
             .hero-actions {
                 justify-content: center;
             }
+            .hero-image img,
             .hero-image .img-placeholder {
                 max-width: 400px;
                 margin: 0 auto;
@@ -934,16 +962,16 @@
             </nav>
 
             <div class="header-utils">
-                <button class="icon-btn" aria-label="Search">
+                <a href="profile.html" class="icon-btn" aria-label="My Account">
                     <i class="fas fa-search" aria-hidden="true"></i>
-                </button>
-                <button class="icon-btn" aria-label="My Account">
+                </a>
+                 <a href="profile.html" class="icon-btn" aria-label="My Account">
                     <i class="fas fa-user" aria-hidden="true"></i>
-                </button>
-                <button class="icon-btn" aria-label="Shopping cart">
+                </a>
+                <a href="shop.html" class="icon-btn" aria-label="Shopping cart">
                     <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                     <span class="cart-count">3</span>
-                </button>
+                </a>
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
                     <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
@@ -970,7 +998,13 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="img-placeholder" role="img" aria-label="Hero image: A model wearing classic Jag Jeans denim in a natural setting.">
+                    <!-- TODO: Update image path -->
+                    <img
+                        src="images/hero.jpg"
+                        alt="Hero image: A model wearing classic Jag Jeans denim in a natural setting, showcasing the perfect fit and premium fabric quality."
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    />
+                    <div class="img-placeholder" style="display:none;" role="img" aria-label="Hero image: A model wearing classic Jag Jeans denim in a natural setting.">
                         <i class="fas fa-image" aria-hidden="true"></i>
                         <span class="label">Hero Image</span>
                         <span class="sub-label">Model in Jag Jeans — Spring Collection</span>
@@ -995,8 +1029,16 @@
                 <!-- Product 1 -->
                 <div class="product-card">
                     <div class="img-placeholder" role="img" aria-label="Product image: Women's high-rise skinny jeans in a dark indigo wash.">
-                        <i class="fas fa-tshirt" aria-hidden="true"></i>
-                        <span class="label">High-Rise Skinny</span>
+                        <!-- TODO: Update image path -->
+                        <img
+                            src="images/product1.jpg"
+                            alt="Women's high-rise skinny jeans in a dark indigo wash"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';"
+                        />
+                        <div class="fallback" style="display:none;">
+                            <i class="fas fa-tshirt" aria-hidden="true"></i>
+                            <span>High-Rise Skinny</span>
+                        </div>
                         <span class="badge">Best Seller</span>
                     </div>
                     <div class="card-body">
@@ -1013,8 +1055,16 @@
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="img-placeholder" role="img" aria-label="Product image: Men's slim-fit jeans in a medium blue wash.">
-                        <i class="fas fa-tshirt" aria-hidden="true"></i>
-                        <span class="label">Slim-Fit Tapered</span>
+                        <!-- TODO: Update image path -->
+                        <img
+                            src="images/product2.jpg"
+                            alt="Men's slim-fit jeans in a medium blue wash"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';"
+                        />
+                        <div class="fallback" style="display:none;">
+                            <i class="fas fa-tshirt" aria-hidden="true"></i>
+                            <span>Slim-Fit Tapered</span>
+                        </div>
                         <span class="badge sale">Sale</span>
                     </div>
                     <div class="card-body">
@@ -1034,8 +1084,16 @@
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="img-placeholder" role="img" aria-label="Product image: Women's straight-leg jeans in a light vintage wash.">
-                        <i class="fas fa-tshirt" aria-hidden="true"></i>
-                        <span class="label">Straight-Leg Vintage</span>
+                        <!-- TODO: Update image path -->
+                        <img
+                            src="images/product3.jpg"
+                            alt="Women's straight-leg jeans in a light vintage wash"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';"
+                        />
+                        <div class="fallback" style="display:none;">
+                            <i class="fas fa-tshirt" aria-hidden="true"></i>
+                            <span>Straight-Leg Vintage</span>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="product-brand">Jag Jeans</div>
@@ -1051,8 +1109,16 @@
                 <!-- Product 4 -->
                 <div class="product-card">
                     <div class="img-placeholder" role="img" aria-label="Product image: Men's relaxed-fit jeans in a dark rinse.">
-                        <i class="fas fa-tshirt" aria-hidden="true"></i>
-                        <span class="label">Relaxed-Fit Classic</span>
+                        <!-- TODO: Update image path -->
+                        <img
+                            src="images/product4.jpg"
+                            alt="Men's relaxed-fit jeans in a dark rinse"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';"
+                        />
+                        <div class="fallback" style="display:none;">
+                            <i class="fas fa-tshirt" aria-hidden="true"></i>
+                            <span>Relaxed-Fit Classic</span>
+                        </div>
                         <span class="badge">New</span>
                     </div>
                     <div class="card-body">
