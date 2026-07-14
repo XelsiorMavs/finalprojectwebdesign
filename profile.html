@@ -14,9 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <style>
-        /* ============================================
-           RESET & BASE (from first code, but we keep second's :root)
-           ============================================ */
         *,
         *::before,
         *::after {
@@ -26,7 +23,6 @@
         }
 
         :root {
-            /* Keep the second code's variables because they are more complete */
             --red-600: #DC2626;
             --red-700: #B91C1C;
             --red-800: #991B1B;
@@ -57,7 +53,6 @@
             color: var(--black);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            /* second code uses margin on .profile-page, so no body padding needed */
         }
 
         a {
@@ -74,10 +69,6 @@
             margin: 0 auto;
             padding: 0 24px;
         }
-
-        /* ============================================
-           NAVBAR STYLES — from the first code (replacing the second's header styles)
-           ============================================ */
 
         /* ----- Header / Navbar ----- */
         .site-header {
@@ -107,7 +98,6 @@
             padding: 0 24px;
         }
 
-        /* ----- Logo ----- */
         .logo {
             display: flex;
             align-items: center;
@@ -129,7 +119,6 @@
             color: var(--red-600);
         }
 
-        /* ----- Navigation Links ----- */
         .nav-links {
             display: flex;
             align-items: center;
@@ -167,7 +156,6 @@
             color: var(--red-600);
         }
 
-        /* ----- Header Utilities (icons) ----- */
         .header-utils {
             display: flex;
             align-items: center;
@@ -206,7 +194,6 @@
             justify-content: center;
         }
 
-        /* ----- Mobile Menu Toggle ----- */
         .menu-toggle {
             display: none;
             background: none;
@@ -217,9 +204,6 @@
             padding: 4px;
         }
 
-        /* ============================================
-           RESPONSIVE — Mobile Navbar
-           ============================================ */
         @media (max-width: 640px) {
             .nav-links {
                 display: none;
@@ -248,11 +232,6 @@
             }
         }
 
-        /* ============================================
-           PROFILE PAGE STYLES — from the second code (unchanged)
-           ============================================ */
-
-        /* ----- Buttons ----- */
         .btn {
             display: inline-block;
             padding: 14px 36px;
@@ -303,7 +282,6 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* Profile page layout */
         .profile-page {
             max-width: 1280px;
             margin: 120px auto 60px;
@@ -401,7 +379,6 @@
             background: white;
         }
 
-        /* Order History */
         .orders-card {
             background: #fff;
             border-radius: 18px;
@@ -442,6 +419,14 @@
             background: #fafafa;
         }
 
+        .order-section{
+            display:none;
+        }
+
+        #allOrders{
+            display:block;
+        }
+
         .status {
             padding: 6px 14px;
             border-radius: 50px;
@@ -470,7 +455,6 @@
             color: #b91c1c;
         }
 
-        /* Profile Details Card */
         .profile-card {
             background: #fff;
             border: 1px solid #e5e5e5;
@@ -490,6 +474,69 @@
         .profile-card-header h3 {
             font-size: 1.3rem;
             font-weight: 600;
+        }
+
+        .profile-picture-section{
+            padding:35px;
+            text-align:center;
+            border-bottom:1px solid #eee;
+        }
+
+        .profile-picture-wrapper{
+            position:relative;
+            width:180px;
+            height:180px;
+            margin:auto;
+        }
+
+        .profile-picture{
+            width:180px;
+            height:180px;
+            border-radius:50%;
+            object-fit:cover;
+            border:5px solid #dc2626;
+            box-shadow:0 8px 20px rgba(0,0,0,.15);
+            transition:.3s;
+        }
+
+        .profile-picture:hover{
+            transform:scale(1.03);
+        }
+
+        .camera-btn{
+            position:absolute;
+            bottom:8px;
+            right:8px;
+            width:45px;
+            height:45px;
+            border-radius:50%;
+            background:#dc2626;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:18px;
+            transition:.3s;
+            cursor:not-allowed;
+            opacity:.4;
+            pointer-events:none;
+        }
+
+        .camera-btn.active{
+            cursor:pointer;
+            opacity:1;
+            pointer-events:auto;
+        }
+
+        .camera-btn.active:hover{
+            background:#b91c1c;
+            transform:scale(1.1);
+        }
+
+        #profilePictureName{
+            margin-top:18px;
+            font-size:1.3rem;
+            font-weight:600;
         }
 
         .edit-btn {
@@ -562,7 +609,6 @@
             outline: none;
         }
 
-        /* Address Modal */
         .address-modal {
             position: fixed;
             inset: 0;
@@ -743,7 +789,71 @@
             margin-top: 18px;
         }
 
-        /* ----- Footer (White with black border) ----- */
+        .purchase-tabs{
+            display:flex;
+            flex-wrap:wrap;
+            gap:15px;
+            margin-top:20px;
+        }
+
+        .purchase-tab{
+            position:relative;
+            display:flex;
+            align-items:center;
+            gap:10px;
+            padding:14px 22px;
+            border:none;
+            border-radius:12px;
+            background:#f5f5f5;
+            font-weight:600;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .purchase-tab i{
+            font-size:18px;
+            color:#dc2626;
+        }
+
+        .purchase-tab:hover{
+            background:#dc2626;
+            color:white;
+            transform:translateY(-2px);
+        }
+
+        .purchase-tab:hover i{
+            color:white;
+        }
+
+        .purchase-tab.active{
+            background:#dc2626;
+            color:white;
+            box-shadow:0 8px 18px rgba(220,38,38,.25);
+        }
+
+        .purchase-tab.active i{
+            color:white;
+        }
+
+        .tab-count{
+            min-width:22px;
+            height:22px;
+            padding:0 6px;
+            border-radius:50px;
+            background:white;
+            color:#dc2626;
+            font-size:.75rem;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-weight:700;
+        }
+
+        .purchase-tab.active .tab-count{
+            background:#fff;
+            color:#dc2626;
+        }
+
         .site-footer {
             background: var(--black);
             color: var(--white);
@@ -841,93 +951,192 @@
             color: var(--gray-300);
         }
 
-        /* ============================================
-           RESPONSIVE (additional from second code)
-           ============================================ */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 32px;
+        /* =========================================
+        RESPONSIVE DESIGN
+        ========================================= */
+
+        /* Laptop */
+        @media (max-width:1200px){
+
+            .profile-page{
+                grid-template-columns:220px 1fr;
+                gap:25px;
             }
+
+            .profile-info{
+                grid-template-columns:1fr 1fr;
+            }
+
         }
 
-        @media (max-width: 868px) {
-            .profile-page {
-                grid-template-columns: 1fr;
-                gap: 30px;
+        /* Tablet */
+        @media (max-width:992px){
+
+            .profile-page{
+                grid-template-columns:1fr;
             }
-            .profile-sidebar {
-                position: static;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
-                border-bottom: 1px solid #eee;
-                padding-bottom: 20px;
+
+            .profile-sidebar{
+                position:static;
+                width:100%;
+                border-bottom:1px solid #eee;
+                padding-bottom:20px;
+                margin-bottom:10px;
             }
-            .profile-sidebar ul {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
+
+            .profile-sidebar ul{
+                display:flex;
+                justify-content:center;
+                flex-wrap:wrap;
+                gap:18px;
             }
-            .profile-sidebar li {
-                margin-bottom: 0;
+
+            .profile-sidebar li{
+                margin:0;
             }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
+
+            .welcome-card{
+                flex-direction:column;
+                text-align:center;
+                gap:20px;
             }
-            .footer-brand p {
-                max-width: 100%;
+
+            .profile-info{
+                grid-template-columns:1fr;
             }
+
+            .info-item{
+                border-right:none !important;
+            }
+
+            .purchase-tabs{
+                justify-content:center;
+            }
+
+            .footer-grid{
+                grid-template-columns:repeat(2,1fr);
+            }
+
         }
 
-        @media (max-width: 640px) {
-            /* The navbar's responsive is already above, but we keep the rest */
-            .profile-info {
-                grid-template-columns: 1fr;
+        /* Mobile */
+        @media (max-width:768px){
+
+            .container,
+            .profile-page{
+                padding:0 15px;
             }
-            .info-item:nth-child(odd) {
-                border-right: none;
+
+            .header-inner{
+                padding:0 15px;
             }
-            .welcome-card {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 16px;
+
+            .logo{
+                font-size:1.3rem;
             }
-            .two-column {
-                grid-template-columns: 1fr;
+
+            .welcome-card{
+                padding:20px;
             }
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
+
+            .profile-card-header{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:15px;
             }
-            .orders-table {
-                font-size: 0.85rem;
+
+            .purchase-tabs{
+                display:grid;
+                grid-template-columns:repeat(2,1fr);
+                gap:10px;
             }
-            .orders-table th,
-            .orders-table td {
-                padding: 12px 10px;
+
+            .purchase-tab{
+                width:100%;
+                justify-content:center;
             }
+
+            .orders-card{
+                overflow-x:auto;
+            }
+
+            .orders-table{
+                min-width:700px;
+            }
+
+            .address-box{
+                width:95%;
+                padding:20px;
+            }
+
+            .two-column{
+                grid-template-columns:1fr;
+            }
+
+            .footer-grid{
+                grid-template-columns:1fr;
+            }
+
         }
 
-        /* The navbar mobile toggle is already handled above; we keep the second code's overrides if needed */
+        /* Small Phones */
+        @media (max-width:480px){
+
+            .profile-picture{
+                width:140px;
+                height:140px;
+            }
+
+            .profile-picture-wrapper{
+                width:140px;
+                height:140px;
+            }
+
+            #profilePictureName{
+                font-size:1.1rem;
+            }
+
+            .purchase-tabs{
+                grid-template-columns:1fr;
+            }
+
+            .purchase-tab{
+                font-size:.9rem;
+                padding:12px;
+            }
+
+            .tab-count{
+                min-width:20px;
+                height:20px;
+                font-size:.7rem;
+            }
+
+            .shop-btn,
+            .edit-btn,
+            .btn{
+                width:100%;
+                text-align:center;
+            }
+
+            .footer-bottom{
+                flex-direction:column;
+                text-align:center;
+                gap:15px;
+            }
+
+        }
     </style>
 </head>
 <body>
 
-    <!-- ============================================================
-         NAVBAR — from first code, with "Profile" active
-    ============================================================ -->
     <header class="site-header" id="siteHeader">
         <div class="header-inner">
 
-            <!-- Logo -->
             <a href="index.html" class="logo" aria-label="Jag Jeans Home">
                 <i class="fas fa-gem logo-icon" aria-hidden="true"></i>
                 Jag<span>Jeans</span>
             </a>
 
-            <!-- Navigation Links -->
             <nav class="nav-links" id="navLinks" aria-label="Main navigation">
                 <a href="index.html">Homepage</a>
                 <a href="shop.html">Shop</a>
@@ -935,7 +1144,6 @@
                 <a href="profile.html" class="active">Profile</a>
             </nav>
 
-            <!-- Header Utilities -->
             <div class="header-utils">
                 <button class="icon-btn" aria-label="Search">
                     <i class="fas fa-search" aria-hidden="true"></i>
@@ -947,7 +1155,6 @@
                     <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                     <span class="cart-count">3</span>
                 </button>
-                <!-- Mobile menu toggle -->
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
                     <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
@@ -956,12 +1163,8 @@
         </div>
     </header>
 
-    <!-- ============================================================
-         PROFILE PAGE CONTENT — from second code (unchanged)
-    ============================================================ -->
     <section class="profile-page">
 
-        <!-- Sidebar -->
         <aside class="profile-sidebar">
 
             <ul>
@@ -982,7 +1185,6 @@
 
         </aside>
 
-        <!-- Main Content -->
         <main class="profile-content">
 
             <div class="welcome-card">
@@ -997,7 +1199,6 @@
                 </a>
 
             </div>
-                <!-- Profile Details Card -->
                 <div class="profile-card" id="profile-details">
 
                     <div class="profile-card-header">
@@ -1007,6 +1208,32 @@
                             <i class="fas fa-pen"></i>
                             Edit
                         </button>
+                    </div>
+
+                    <div class="profile-picture-section">
+
+                        <div class="profile-picture-wrapper">
+
+                            <img
+                                src="https://placehold.co/180x180?text=Profile"
+                                id="profileImage"
+                                class="profile-picture"
+                                alt="Profile Picture">
+
+                            <label for="profileUpload" class="camera-btn">
+                                <i class="fas fa-camera"></i>
+                            </label>
+
+                            <input
+                                type="file"
+                                id="profileUpload"
+                                accept="image/*"
+                                hidden>
+
+                        </div>
+
+                        <h4 id="profilePictureName">Ms. Reina</h4>
+
                     </div>
 
                     <div class="profile-info">
@@ -1045,10 +1272,6 @@
 
                 </div>
 
-            <!-- ===========================
-                ADDRESS BOOK
-            =========================== -->
-
             <div class="profile-card">
 
                 <div class="profile-card-header">
@@ -1060,7 +1283,6 @@
                     </button>
                 </div>
 
-                <!-- Saved Address -->
                 <div id="savedAddressCard" style="display:none;padding:25px;">
                     <h4 id="savedRecipient"></h4>
                     <p id="savedPhone"></p>
@@ -1078,10 +1300,6 @@
                 </div>
 
             </div>
-
-            <!-- ===========================
-                ADDRESS MODAL
-            =========================== -->
 
             <div class="address-modal" id="addressModal">
 
@@ -1230,91 +1448,233 @@
 
             </div>
 
-            <!-- ===========================
-                    MY PURCHASE
-            =========================== -->
+            <div class="card-header">
+                
+            <h3 id="my-purchases">My Purchases</h3>
+            <div class="purchase-tabs">
 
-            <div class="orders-card" id="my-purchases">
+                <button class="purchase-tab active" data-tab="all">
+                    <i class="fas fa-border-all"></i>
+                    <span>All</span>
+                    <span class="tab-count">5</span>
+                </button>
 
-                <div class="card-header">
-                    <h3>My Purchases</h3>
-                </div>
+                <button class="purchase-tab" data-tab="cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                    <span class="tab-count">1</span>
+                </button>
 
-                <table class="orders-table">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Purchased On</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                <button class="purchase-tab" data-tab="pay">
+                    <i class="fas fa-credit-card"></i>
+                    <span>To Pay</span>
+                    <span class="tab-count">1</span>
+                </button>
 
-                    <tbody>
+                <button class="purchase-tab" data-tab="ship">
+                    <i class="fas fa-truck"></i>
+                    <span>To Ship</span>
+                    <span class="tab-count">1</span>
+                </button>
 
-                        <tr>
-                            <td>
-                                <strong>Classic Slim Jeans</strong><br>
-                                <small>Blue Denim</small>
-                            </td>
-                            <td>1</td>
-                            <td>₱2,499</td>
-                            <td>July 8, 2026</td>
-                            <td>
-                                <a href="shop.html" class="btn btn-primary">Buy Again</a>
-                            </td>
-                        </tr>
+                <button class="purchase-tab" data-tab="receive">
+                    <i class="fas fa-box-open"></i>
+                    <span>To Receive</span>
+                    <span class="tab-count">1</span>
+                </button>
 
-                        <tr>
-                            <td>
-                                <strong>Black Denim Jacket</strong><br>
-                                <small>Large</small>
-                            </td>
-                            <td>1</td>
-                            <td>₱3,199</td>
-                            <td>June 29, 2026</td>
-                            <td>
-                                <a href="shop.html" class="btn btn-primary">Buy Again</a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>Oversized Tee</strong><br>
-                                <small>White</small>
-                            </td>
-                            <td>2</td>
-                            <td>₱1,998</td>
-                            <td>June 12, 2026</td>
-                            <td>
-                                <a href="shop.html" class="btn btn-primary">Buy Again</a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>Relaxed Fit Jeans</strong><br>
-                                <small>Black</small>
-                            </td>
-                            <td>1</td>
-                            <td>₱2,799</td>
-                            <td>May 27, 2026</td>
-                            <td>
-                                <a href="shop.html" class="btn btn-primary">Buy Again</a>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
+                <button class="purchase-tab" data-tab="rate">
+                    <i class="fas fa-star"></i>
+                    <span>To Rate</span>
+                    <span class="tab-count">1</span>
+                </button>
 
             </div>
+            <div class="orders-card">
+
+    <div class="card-header" i>
+
+        <div class="purchase-tabs">
+        <div id="allOrders" class="order-section active-section">
+
+            <table class="orders-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Order #</th>
+                        <th>Product</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>#JG1001</td>
+                        <td>Classic Slim Jeans</td>
+                        <td><span class="status processing">To Pay</span></td>
+                        <td><button class="btn btn-primary">Pay Now</button></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>#JG1002</td>
+                        <td>Black Denim Jacket</td>
+                        <td><span class="status shipped">To Ship</span></td>
+                        <td><button class="btn btn-primary">Track</button></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>#JG1003</td>
+                        <td>Relaxed Fit Jeans</td>
+                        <td><span class="status delivered">To Receive</span></td>
+                        <td><button class="btn btn-primary">Confirm</button></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>#JG1004</td>
+                        <td>Oversized T-Shirt</td>
+                        <td><span class="status delivered">To Rate</span></td>
+                        <td><button class="btn btn-primary">Rate</button></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>#JG1005</td>
+                        <td>Slim Fit Polo</td>
+                        <td><span class="status processing">Cart</span></td>
+                        <td><button class="btn btn-primary">Checkout</button></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div id="payOrders" class="order-section">
+
+            <table class="orders-table">
+
+                <tbody>
+
+                    <tr>
+
+                        <td>#JG1001</td>
+                        <td>Classic Slim Jeans</td>
+                        <td><span class="status processing">Awaiting Payment</span></td>
+                        <td><button class="btn btn-primary">Pay Now</button></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div id="shipOrders" class="order-section">
+
+            <table class="orders-table">
+
+                <tbody>
+
+                    <tr>
+
+                        <td>#JG1002</td>
+                        <td>Black Denim Jacket</td>
+                        <td><span class="status shipped">Preparing Shipment</span></td>
+                        <td><button class="btn btn-primary">Track Order</button></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div id="receiveOrders" class="order-section">
+
+            <table class="orders-table">
+
+                <tbody>
+
+                    <tr>
+
+                        <td>#JG1003</td>
+                        <td>Relaxed Fit Jeans</td>
+                        <td><span class="status delivered">Out for Delivery</span></td>
+                        <td><button class="btn btn-primary">Confirm Receipt</button></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div id="rateOrders" class="order-section">
+
+            <table class="orders-table">
+
+                <tbody>
+
+                    <tr>
+
+                        <td>#JG1004</td>
+                        <td>Oversized T-Shirt</td>
+                        <td><span class="status delivered">Delivered</span></td>
+                        <td><button class="btn btn-primary">⭐ Rate Product</button></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div id="cartOrders" class="order-section">
+
+            <table class="orders-table">
+
+                <tbody>
+
+                    <tr>
+
+                        <td>#JG1005</td>
+                        <td>Slim Fit Polo (Qty: 2)</td>
+                        <td>₱1,498</td>
+                        <td><button class="btn btn-primary">Checkout</button></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+        </div>
 
     </section>
 
-    <!-- ============================================================
-         FOOTER — from second code (unchanged)
-    ============================================================ -->
     <footer class="site-footer" role="contentinfo">
         <div class="container">
             <div class="footer-grid">
@@ -1379,65 +1739,18 @@
         </div>
     </footer>
 
-    <!-- ============================================================
-         JAVASCRIPT — Navbar toggle + Profile logic (merged)
-    ============================================================ -->
     <script>
-        (function() {
-            'use strict';
+        /* ==========================================================
+        PROFILE DETAILS + PROFILE PICTURE
+        ========================================================== */
 
-            // --- Mobile menu toggle (from first code) ---
-            const menuToggle = document.getElementById('menuToggle');
-            const navLinks = document.getElementById('navLinks');
-
-            if (menuToggle && navLinks) {
-                menuToggle.addEventListener('click', function() {
-                    const isOpen = navLinks.classList.toggle('open');
-                    this.setAttribute('aria-expanded', isOpen);
-
-                    // Toggle hamburger ↔ times icon
-                    const icon = this.querySelector('i');
-                    if (icon) {
-                        icon.classList.toggle('fa-bars');
-                        icon.classList.toggle('fa-times');
-                    }
-                });
-
-                // Close menu when a link is clicked (mobile)
-                navLinks.querySelectorAll('a').forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        navLinks.classList.remove('open');
-                        menuToggle.setAttribute('aria-expanded', 'false');
-                        const icon = menuToggle.querySelector('i');
-                        if (icon) {
-                            icon.classList.add('fa-bars');
-                            icon.classList.remove('fa-times');
-                        }
-                    });
-                });
-            }
-
-            // --- Sticky header shadow (from first code) ---
-            const header = document.getElementById('siteHeader');
-            window.addEventListener('scroll', function() {
-                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                if (currentScroll > 20) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            }, { passive: true });
-
-        })();
-
-        // ============================================================
-        // PROFILE LOGIC — from second code (unchanged)
-        // ============================================================
-        let editingAddressId = null;
-
-        //profile editing
         const editBtn = document.getElementById("editProfileBtn");
         const welcomeName = document.getElementById("welcomeName");
+
+        const profileImage = document.getElementById("profileImage");
+        const profileUpload = document.getElementById("profileUpload");
+        const pictureName = document.getElementById("profilePictureName");
+        const cameraBtn = document.querySelector(".camera-btn");
 
         let editing = false;
 
@@ -1450,19 +1763,75 @@
             { id: "memberSince", type: "readonly" }
         ];
 
-        // Load saved data
-        const saved = JSON.parse(localStorage.getItem("profileData"));
+        let profileData = {};
 
-        if (saved) {
-            fields.forEach(field => {
-                const el = document.getElementById(field.id);
-                if (saved[field.id]) {
-                    el.textContent = saved[field.id];
-                }
-            });
+        try {
 
-            welcomeName.textContent = document.getElementById("fullName").textContent;
+            profileData =
+                JSON.parse(localStorage.getItem("profileData")) || {};
+
+        } catch {
+
+            profileData = {};
+
         }
+
+        fields.forEach(field => {
+
+            const element = document.getElementById(field.id);
+
+            if (profileData[field.id]) {
+
+                element.textContent = profileData[field.id];
+
+            }
+
+        });
+
+        welcomeName.textContent =
+        document.getElementById("fullName").textContent;
+
+        pictureName.textContent =
+        document.getElementById("fullName").textContent;
+
+        const savedPicture =
+        localStorage.getItem("profilePicture");
+
+        if (savedPicture) {
+
+            profileImage.src = savedPicture;
+
+        }
+
+        profileUpload.addEventListener("change", function () {
+
+            if (!editing) {
+
+                this.value = "";
+                return;
+
+            }
+
+            const file = this.files[0];
+
+            if (!file) return;
+
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+
+                profileImage.src = e.target.result;
+
+                localStorage.setItem(
+                    "profilePicture",
+                    e.target.result
+                );
+
+            };
+
+            reader.readAsDataURL(file);
+
+        });
 
         editBtn.addEventListener("click", () => {
 
@@ -1472,58 +1841,93 @@
 
                     if (field.type === "readonly") return;
 
-                    const element = document.getElementById(field.id);
-                    const value = element.textContent.trim();
+                    const element =
+                    document.getElementById(field.id);
+
+                    const value =
+                    element.textContent.trim();
 
                     let input;
 
                     switch (field.type) {
 
                         case "text":
-                            input = document.createElement("input");
+
+                            input =
+                            document.createElement("input");
+
                             input.type = "text";
                             input.value = value;
+
                             break;
 
                         case "email":
-                            input = document.createElement("input");
+
+                            input =
+                            document.createElement("input");
+
                             input.type = "email";
-                            input.value = value;
                             input.required = true;
-                            input.placeholder = "Enter your email";
+                            input.value = value;
+
                             break;
 
                         case "number":
-                            input = document.createElement("input");
+
+                            input =
+                            document.createElement("input");
+
                             input.type = "tel";
-                            input.inputMode = "numeric";
-                            input.pattern = "[0-9]{11}";
                             input.maxLength = 11;
-                            input.placeholder = "09XXXXXXXXX";
-                            input.value = value.replace(/\D/g, "");
+                            input.inputMode = "numeric";
+                            input.value =
+                            value.replace(/\D/g, "");
 
                             input.addEventListener("input", function () {
-                                this.value = this.value.replace(/\D/g, "").slice(0, 11);
+
+                                this.value =
+                                this.value.replace(/\D/g, "")
+                                .slice(0,11);
+
                             });
 
                             break;
 
                         case "date":
-                            input = document.createElement("input");
+
+                            input =
+                            document.createElement("input");
+
                             input.type = "date";
 
-                            const date = new Date(value);
+                            const date =
+                            new Date(value);
 
                             if (!isNaN(date)) {
-                                input.value = date.toISOString().split("T")[0];
+
+                                input.value =
+                                date.toISOString().split("T")[0];
+
                             }
+
                             break;
 
                         case "select":
-                            input = document.createElement("select");
 
-                            ["Male", "Female", "Rather not to say"].forEach(option => {
-                                const opt = document.createElement("option");
+                            input =
+                            document.createElement("select");
+
+                            [
+
+                                "Male",
+                                "Female",
+                                "Rather not to say"
+
+                            ].forEach(option => {
+
+                                const opt =
+                                document.createElement("option");
+
                                 opt.value = option;
                                 opt.textContent = option;
 
@@ -1531,86 +1935,142 @@
                                     opt.selected = true;
 
                                 input.appendChild(opt);
+
                             });
 
                             break;
+
                     }
 
                     input.className = "edit-input";
 
                     element.innerHTML = "";
+
                     element.appendChild(input);
 
                 });
 
-                editBtn.innerHTML = '<i class="fas fa-save"></i> Save';
-                editing = true;
-
-            } else {
-
-                const profileData = {};
-
-                let valid = true;
-
-                fields.forEach(field => {
-
-                    const element = document.getElementById(field.id);
-
-                    if (field.type === "readonly") {
-                        profileData[field.id] = element.textContent;
-                        return;
-                    }
-
-                    const input = element.firstElementChild;
-
-                    // Email validation
-                    if (field.type === "email" && !input.checkValidity()) {
-                        alert("Please enter a valid email address.");
-                        input.focus();
-                        valid = false;
-                        return;
-                    }
-
-                    let value = input.value;
-
-                    if (field.type === "date" && value !== "") {
-                        value = new Date(value).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric"
-                        });
-                    }
-
-                    if (field.type === "number") {
-                        if (!/^\d{11}$/.test(value)) {
-                            alert("Please enter a valid 11-digit contact number.");
-                            input.focus();
-                            valid = false;
-                            return;
-                        }
-                    }
-
-                    element.textContent = value;
-                    profileData[field.id] = value;
-
-                });
-
-                if (!valid) return;
-
-                welcomeName.textContent =
-                    document.getElementById("fullName").textContent;
-
-                localStorage.setItem("profileData", JSON.stringify(profileData));
+                cameraBtn.classList.add("active");
 
                 editBtn.innerHTML =
-                    '<i class="fas fa-pen"></i> Edit';
+                '<i class="fas fa-save"></i> Save';
 
-                editing = false;
+                editing = true;
+
+                return;
 
             }
 
-        });
+            const saveData = {};
 
+            for (const field of fields) {
+
+                const element =
+                document.getElementById(field.id);
+
+                if (field.type === "readonly") {
+
+                    saveData[field.id] =
+                    element.textContent;
+
+                    continue;
+
+                }
+
+                const input =
+                element.firstElementChild;
+
+                let value =
+                input.value.trim();
+
+                if (field.type === "text" && value === "") {
+
+                    alert("Full name cannot be empty.");
+
+                    input.focus();
+
+                    return;
+
+                }
+
+                if (field.type === "email") {
+
+                    if (!input.checkValidity()) {
+
+                        alert("Enter a valid email.");
+
+                        input.focus();
+
+                        return;
+
+                    }
+
+                }
+
+                if (field.type === "number") {
+
+                    if (!/^09\d{9}$/.test(value)) {
+
+                        alert(
+                            "Please enter a valid Philippine mobile number."
+                        );
+
+                        input.focus();
+
+                        return;
+
+                    }
+
+                }
+
+                if (field.type === "date" && value !== "") {
+
+                    value =
+                    new Date(value).toLocaleDateString(
+
+                        "en-US",
+
+                        {
+
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric"
+
+                        }
+
+                    );
+
+                }
+
+                element.textContent = value;
+
+                saveData[field.id] = value;
+
+            }
+
+            localStorage.setItem(
+
+                "profileData",
+
+                JSON.stringify(saveData)
+
+            );
+
+            welcomeName.textContent =
+            document.getElementById("fullName").textContent;
+
+            pictureName.textContent =
+            document.getElementById("fullName").textContent;
+
+            cameraBtn.classList.remove("active");
+
+            editBtn.innerHTML =
+            '<i class="fas fa-pen"></i> Edit';
+
+            editing = false;
+
+        });
+     
         /* ===========================
                 ADDRESS BOOK
         =========================== */
@@ -1629,6 +2089,9 @@
         const editBtnAddress = document.getElementById("editAddressBtn");
         const deleteBtn = document.getElementById("deleteAddressBtn");
 
+        // Variable to track the ID of the address being edited
+        let editingAddressId = null;
+
         openBtn.onclick = () => modal.classList.add("active");
 
         closeBtn.onclick = () => modal.classList.remove("active");
@@ -1644,8 +2107,6 @@
             }
 
         };
-
-        /* Copy Profile Details */
 
         copyBtn.onclick = function(){
 
@@ -1672,15 +2133,12 @@
 
         };
 
-        /* Phone Validation */
-
         document.getElementById("phoneNumber").addEventListener("input",function(){
 
             this.value=this.value.replace(/\D/g,"").slice(0,10);
 
         });
 
-        /* Save Address */
         form.addEventListener("submit", function(e){
 
             e.preventDefault();
@@ -1713,7 +2171,6 @@
 
             };
 
-            // Only one default address
             if(address.defaultAddress){
 
                 addresses.forEach(a => a.defaultAddress = false);
@@ -1752,7 +2209,6 @@
 
         });
 
-        /* Load Address */
         function loadAddresses(){
 
             const addresses =
@@ -1830,8 +2286,6 @@
 
         }
 
-        /* Edit */
-
         function editAddress(id){
         let addresses =
             JSON.parse(localStorage.getItem("addressBook")) || [];
@@ -1860,8 +2314,6 @@
 
         }
 
-        /* Delete */
-
         deleteBtn.onclick=function(){
 
             if(confirm("Delete this address?")){
@@ -1873,8 +2325,6 @@
             }
 
         };
-
-        //delete address by id
 
         function deleteAddress(id){
 
@@ -1893,8 +2343,42 @@
 
         }
 
-        // Initial load
         loadAddresses();
+
+        // My Purchases Tabs
+
+        const purchaseTabs = document.querySelectorAll(".purchase-tab");
+        const orderSections = document.querySelectorAll(".order-section");
+
+        // Default: All tab is active
+        document.querySelector('[data-tab="all"]').classList.add("active");
+        document.getElementById("allOrders").style.display = "block";
+
+        purchaseTabs.forEach(tab => {
+
+            tab.addEventListener("click", function () {
+
+                // Remove active state
+                purchaseTabs.forEach(btn => btn.classList.remove("active"));
+
+                // Hide all sections
+                orderSections.forEach(section => section.style.display = "none");
+
+                // Activate selected tab
+                this.classList.add("active");
+
+                // Show corresponding section
+                const target = document.getElementById(this.dataset.tab + "Orders");
+
+                if (target) {
+                    target.style.display = "block";
+                }
+
+            });
+
+        });
+
+        
     </script>
 </body>
 </html>
