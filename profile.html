@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <style>
+        /* ============================================
+           RESET & BASE
+        ============================================ */
         *,
         *::before,
         *::after {
@@ -43,9 +46,7 @@
             --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -53,40 +54,29 @@
             color: var(--black);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            padding-top: 80px;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ----- Header / Navbar ----- */
+        /* ============================================
+           HEADER / NAVBAR (unified, with image logo)
+        ============================================ */
         .site-header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255,255,255,0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--gray-200);
             transition: var(--transition);
         }
-
-        .site-header.scrolled {
-            box-shadow: var(--shadow-sm);
-        }
+        .site-header.scrolled { box-shadow: var(--shadow-sm); }
 
         .header-inner {
             display: flex;
@@ -98,33 +88,14 @@
             padding: 0 24px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.6rem;
-            letter-spacing: -0.02em;
-            color: var(--black);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--red-600);
-        }
-
-        .logo-icon {
-            font-size: 1.4rem;
-            color: var(--red-600);
-        }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 150px; width: auto; display: block; }
 
         .nav-links {
             display: flex;
             align-items: center;
             gap: 32px;
         }
-
         .nav-links a {
             font-size: 0.85rem;
             font-weight: 500;
@@ -135,7 +106,6 @@
             position: relative;
             text-decoration: none;
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -146,22 +116,15 @@
             background-color: var(--red-600);
             transition: var(--transition);
         }
-
         .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--red-600);
-        }
+        .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover { color: var(--red-600); }
 
         .header-utils {
             display: flex;
             align-items: center;
             gap: 20px;
         }
-
         .header-utils .icon-btn {
             background: none;
             border: none;
@@ -171,13 +134,14 @@
             transition: var(--transition);
             position: relative;
             padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
         .header-utils .icon-btn:hover {
             color: var(--red-600);
             transform: scale(1.05);
         }
-
         .header-utils .cart-count {
             position: absolute;
             top: -8px;
@@ -186,13 +150,17 @@
             font-weight: 700;
             background-color: var(--red-600);
             color: var(--white);
-            width: 18px;
+            min-width: 18px;
             height: 18px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 0 4px;
+            line-height: 1;
+            transition: var(--transition);
         }
+        .header-utils .cart-count.bump { transform: scale(1.35); }
 
         .menu-toggle {
             display: none;
@@ -218,20 +186,13 @@
                 border-bottom: 1px solid var(--gray-200);
                 box-shadow: var(--shadow-md);
             }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .header-utils .icon-btn span {
-                display: none;
-            }
+            .nav-links.open { display: flex; }
+            .menu-toggle { display: block; }
+            .header-utils .icon-btn span { display: none; }
+            .logo img { height: 32px; }
         }
 
+        /* ----- Buttons ----- */
         .btn {
             display: inline-block;
             padding: 14px 36px;
@@ -246,42 +207,39 @@
             transition: var(--transition);
             text-align: center;
         }
-
         .btn-primary {
             background-color: var(--red-600);
             color: var(--white);
         }
-
         .btn-primary:hover {
             background-color: var(--red-700);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-
         .btn-secondary {
             background-color: transparent;
             color: var(--red-600);
             border: 2px solid var(--red-600);
         }
-
         .btn-secondary:hover {
             background-color: var(--red-600);
             color: var(--white);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-
         .btn-black {
             background-color: var(--black);
             color: var(--white);
         }
-
         .btn-black:hover {
             background-color: var(--gray-900);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
 
+        /* ============================================
+           PROFILE PAGE STYLES (original, unchanged)
+        ============================================ */
         .profile-page {
             max-width: 1280px;
             margin: 120px auto 60px;
@@ -295,27 +253,18 @@
             font-size: 1.7rem;
             margin-bottom: 40px;
         }
-
-        .profile-sidebar ul {
-            list-style: none;
-        }
-
-        .profile-sidebar li {
-            margin-bottom: 18px;
-        }
-
+        .profile-sidebar ul { list-style: none; }
+        .profile-sidebar li { margin-bottom: 18px; }
         .profile-sidebar a {
             color: #555;
             font-size: 1rem;
             transition: .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-
         .profile-sidebar a:hover,
-        .profile-sidebar .active {
-            color: #000;
-            font-weight: 600;
-        }
-
+        .profile-sidebar .active { color: #000; font-weight: 600; }
         .profile-sidebar {
             position: sticky;
             top: 110px;
@@ -337,19 +286,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+            box-shadow: 0 4px 18px rgba(0,0,0,.08);
         }
-
         .welcome-card h2 {
             font-size: 1.8rem;
             margin-bottom: 5px;
         }
-
-        .welcome-card p {
-            color: #666;
-            font-size: 1rem;
-        }
-
+        .welcome-card p { color: #666; font-size: 1rem; }
         .shop-btn {
             background: #111;
             color: white;
@@ -358,74 +301,45 @@
             text-decoration: none;
             font-weight: 600;
             transition: .3s;
+            display: inline-block;
         }
+        .shop-btn:hover { background: var(--red-600); }
 
-        .shop-btn:hover {
-            background: var(--red-600);
-        }
-
-        .profile-avatar {
-            position: absolute;
-            top: 90px;
-            right: 40px;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: 1px solid #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            background: white;
-        }
-
+        /* Orders card */
         .orders-card {
             background: #fff;
             border-radius: 18px;
             border: 1px solid #e5e5e5;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+            box-shadow: 0 4px 18px rgba(0,0,0,.08);
             overflow: hidden;
         }
-
         .card-header {
             padding: 20px 30px;
             border-bottom: 1px solid #eee;
         }
-
         .card-header h3 {
             margin: 0;
             font-size: 1.3rem;
             font-weight: 600;
         }
-
         .orders-table {
             width: 100%;
             border-collapse: collapse;
         }
-
         .orders-table th {
             background: #f8f8f8;
             padding: 16px;
             text-align: left;
             font-weight: 600;
         }
-
         .orders-table td {
             padding: 18px 16px;
             border-top: 1px solid #f1f1f1;
         }
+        .orders-table tbody tr:hover { background: #fafafa; }
 
-        .orders-table tbody tr:hover {
-            background: #fafafa;
-        }
-
-        .order-section{
-            display:none;
-        }
-
-        #allOrders{
-            display:block;
-        }
+        .order-section { display: none; }
+        #allOrders { display: block; }
 
         .status {
             padding: 6px 14px;
@@ -434,35 +348,19 @@
             font-weight: 600;
             display: inline-block;
         }
+        .delivered { background: #d1fae5; color: #047857; }
+        .shipped { background: #dbeafe; color: #1d4ed8; }
+        .processing { background: #fef3c7; color: #b45309; }
+        .cancelled { background: #fee2e2; color: #b91c1c; }
 
-        .delivered {
-            background: #d1fae5;
-            color: #047857;
-        }
-
-        .shipped {
-            background: #dbeafe;
-            color: #1d4ed8;
-        }
-
-        .processing {
-            background: #fef3c7;
-            color: #b45309;
-        }
-
-        .cancelled {
-            background: #fee2e2;
-            color: #b91c1c;
-        }
-
+        /* Profile card */
         .profile-card {
             background: #fff;
             border: 1px solid #e5e5e5;
             border-radius: 18px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+            box-shadow: 0 4px 18px rgba(0,0,0,.08);
             overflow: hidden;
         }
-
         .profile-card-header {
             display: flex;
             justify-content: space-between;
@@ -470,73 +368,64 @@
             padding: 20px 30px;
             border-bottom: 1px solid #eee;
         }
-
         .profile-card-header h3 {
             font-size: 1.3rem;
             font-weight: 600;
         }
 
-        .profile-picture-section{
-            padding:35px;
-            text-align:center;
-            border-bottom:1px solid #eee;
+        /* Profile picture */
+        .profile-picture-section {
+            padding: 35px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
         }
-
-        .profile-picture-wrapper{
-            position:relative;
-            width:180px;
-            height:180px;
-            margin:auto;
+        .profile-picture-wrapper {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: auto;
         }
-
-        .profile-picture{
-            width:180px;
-            height:180px;
-            border-radius:50%;
-            object-fit:cover;
-            border:5px solid #dc2626;
-            box-shadow:0 8px 20px rgba(0,0,0,.15);
-            transition:.3s;
+        .profile-picture {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #dc2626;
+            box-shadow: 0 8px 20px rgba(0,0,0,.15);
+            transition: .3s;
         }
-
-        .profile-picture:hover{
-            transform:scale(1.03);
+        .profile-picture:hover { transform: scale(1.03); }
+        .camera-btn {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #dc2626;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: .3s;
+            cursor: not-allowed;
+            opacity: .4;
+            pointer-events: none;
         }
-
-        .camera-btn{
-            position:absolute;
-            bottom:8px;
-            right:8px;
-            width:45px;
-            height:45px;
-            border-radius:50%;
-            background:#dc2626;
-            color:white;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:18px;
-            transition:.3s;
-            cursor:not-allowed;
-            opacity:.4;
-            pointer-events:none;
+        .camera-btn.active {
+            cursor: pointer;
+            opacity: 1;
+            pointer-events: auto;
         }
-
-        .camera-btn.active{
-            cursor:pointer;
-            opacity:1;
-            pointer-events:auto;
+        .camera-btn.active:hover {
+            background: #b91c1c;
+            transform: scale(1.1);
         }
-
-        .camera-btn.active:hover{
-            background:#b91c1c;
-            transform:scale(1.1);
-        }
-
-        #profilePictureName{
-            margin-top:18px;
-            font-size:1.3rem;
-            font-weight:600;
+        #profilePictureName {
+            margin-top: 18px;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .edit-btn {
@@ -547,8 +436,10 @@
             cursor: pointer;
             font-weight: 600;
             transition: .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-
         .edit-input {
             width: 100%;
             padding: 10px 12px;
@@ -560,12 +451,10 @@
             background: #fff;
             font-family: inherit;
         }
-
         .edit-input:focus {
             border-color: #dc2626;
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, .15);
+            box-shadow: 0 0 0 3px rgba(220,38,38,.15);
         }
-
         .edit-btn:hover {
             background: var(--red-600);
             color: #fff;
@@ -576,29 +465,22 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
         }
-
         .info-item {
             padding: 22px 30px;
             border-bottom: 1px solid #eee;
         }
-
-        .info-item:nth-child(odd) {
-            border-right: 1px solid #eee;
-        }
-
+        .info-item:nth-child(odd) { border-right: 1px solid #eee; }
         .label {
             display: block;
             font-size: .85rem;
             color: #777;
             margin-bottom: 6px;
         }
-
         .value {
             font-size: 1rem;
             font-weight: 600;
             color: #111;
         }
-
         .value[contenteditable="true"] {
             background: #fff8dc;
             border: 1px solid #dc2626;
@@ -609,20 +491,17 @@
             outline: none;
         }
 
+        /* Address modal */
         .address-modal {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, .45);
+            background: rgba(0,0,0,.45);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 9999;
         }
-
-        .address-modal.active {
-            display: flex;
-        }
-
+        .address-modal.active { display: flex; }
         .address-box {
             background: #fff;
             width: 700px;
@@ -633,37 +512,26 @@
             max-height: 90vh;
             overflow-y: auto;
         }
-
         @keyframes popup {
-            from {
-                opacity: 0;
-                transform: scale(.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(.9); }
+            to { opacity: 1; transform: scale(1); }
         }
-
         .address-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
         }
-
         .address-header h2 {
             font-size: 1.8rem;
             font-weight: 600;
         }
-
         .close-address {
             border: none;
             background: none;
             font-size: 1.4rem;
             cursor: pointer;
         }
-
         .address-input {
             width: 100%;
             padding: 14px 16px;
@@ -675,18 +543,15 @@
             transition: .25s;
             font-family: inherit;
         }
-
         .address-input:focus {
             border-color: #dc2626;
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, .15);
+            box-shadow: 0 0 0 3px rgba(220,38,38,.15);
         }
-
         .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
-
         .phone-row {
             display: flex;
             align-items: center;
@@ -695,14 +560,12 @@
             overflow: hidden;
             margin-bottom: 16px;
         }
-
         .phone-row span {
             padding: 14px 18px;
             background: #f7f7f7;
             border-right: 1px solid #ddd;
             font-weight: 600;
         }
-
         .phone-row input {
             border: none;
             margin: 0;
@@ -710,59 +573,40 @@
             padding: 14px;
             outline: none;
         }
-
         .address-footer {
             display: flex;
             justify-content: flex-end;
             gap: 12px;
             margin-top: 20px;
         }
-
-        .cancel-btn,
-        .save-btn {
+        .cancel-btn, .save-btn {
             padding: 12px 26px;
             border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
             transition: .25s;
         }
-
         .cancel-btn {
             background: #fff;
             border: 1px solid #ccc;
         }
-
-        .cancel-btn:hover {
-            background: #f5f5f5;
-        }
-
+        .cancel-btn:hover { background: #f5f5f5; }
         .save-btn {
             background: #dc2626;
             color: #fff;
             border: none;
         }
-
-        .save-btn:hover {
-            background: #b91c1c;
-        }
+        .save-btn:hover { background: #b91c1c; }
 
         #savedAddressCard {
             border-top: 1px solid #eee;
         }
-
         #savedRecipient {
             font-size: 1.15rem;
             margin-bottom: 5px;
         }
-
-        #savedPhone {
-            color: #666;
-            margin-bottom: 8px;
-        }
-
-        #savedFullAddress {
-            line-height: 1.6;
-        }
+        #savedPhone { color: #666; margin-bottom: 8px; }
+        #savedFullAddress { line-height: 1.6; }
 
         .address-item {
             border: 1px solid #e5e5e5;
@@ -771,7 +615,6 @@
             margin-top: 20px;
             position: relative;
         }
-
         .default-badge {
             position: absolute;
             right: 20px;
@@ -782,114 +625,299 @@
             border-radius: 30px;
             font-size: .8rem;
         }
-
         .address-buttons {
             display: flex;
             gap: 10px;
             margin-top: 18px;
         }
 
-        .purchase-tabs{
-            display:flex;
-            flex-wrap:wrap;
-            gap:15px;
-            margin-top:20px;
+        /* Purchase tabs */
+        .purchase-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .purchase-tab {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 22px;
+            border: none;
+            border-radius: 12px;
+            background: #f5f5f5;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+        }
+        .purchase-tab i {
+            font-size: 18px;
+            color: #dc2626;
+        }
+        .purchase-tab:hover {
+            background: #dc2626;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .purchase-tab:hover i { color: white; }
+        .purchase-tab.active {
+            background: #dc2626;
+            color: white;
+            box-shadow: 0 8px 18px rgba(220,38,38,.25);
+        }
+        .purchase-tab.active i { color: white; }
+        .tab-count {
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            border-radius: 50px;
+            background: white;
+            color: #dc2626;
+            font-size: .75rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+        }
+        .purchase-tab.active .tab-count {
+            background: #fff;
+            color: #dc2626;
         }
 
-        .purchase-tab{
-            position:relative;
-            display:flex;
-            align-items:center;
-            gap:10px;
-            padding:14px 22px;
-            border:none;
-            border-radius:12px;
-            background:#f5f5f5;
-            font-weight:600;
-            cursor:pointer;
-            transition:.3s;
+        .purchase-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 24px 30px 30px;
+        }
+        .purchase-summary-card {
+            border: 1px solid #ececec;
+            border-radius: 16px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 14px rgba(0,0,0,.05);
+        }
+        .purchase-summary-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .purchase-summary-card .summary-meta {
+            color: #666;
+            font-size: .88rem;
+            margin-bottom: 16px;
+        }
+        .purchase-list {
+            display: grid;
+            gap: 12px;
+        }
+        .purchase-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border: 1px solid #f0f0f0;
+            border-radius: 14px;
+            padding: 12px;
+            background: #fafafa;
+        }
+        .purchase-item .thumb {
+            width: 64px;
+            height: 80px;
+            border-radius: 10px;
+            background: linear-gradient(145deg, #f1f1f1, #e2e2e2);
+            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        .purchase-item .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .purchase-item .thumb i {
+            font-size: 1.3rem;
+        }
+        .purchase-item .details {
+            flex: 1;
+            min-width: 0;
+        }
+        .purchase-item .details h5 {
+            font-size: .95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.25;
+        }
+        .purchase-item .details p {
+            color: #666;
+            font-size: .82rem;
+            margin-bottom: 4px;
+        }
+        .purchase-item .details .meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .purchase-item .amount {
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .purchase-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .purchase-remove-btn {
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0;
+            transition: .25s;
+        }
+        .purchase-remove-btn:hover {
+            color: #dc2626;
+            transform: translateY(-1px);
+        }
+        .star-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .star-rating .rating-label {
+            font-size: 0.78rem;
+            color: #666;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+        .star-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #e5e7eb;
+            border-radius: 999px;
+            background: #fff;
+            color: #d1d5db;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .2s;
+            padding: 0;
+        }
+        .star-btn:hover,
+        .star-btn.active {
+            color: #f59e0b;
+            border-color: #f59e0b;
+            transform: translateY(-1px);
+        }
+        .cart-buy-btn {
+            border: none;
+            border-radius: 999px;
+            padding: 9px 14px;
+            background: #111;
+            color: #fff;
+            font-size: .78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .25s;
+        }
+        .cart-buy-btn:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+        }
+        .buy-all-btn {
+            white-space: nowrap;
+        }
+        .purchase-section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .purchase-section-head h4 {
+            margin-bottom: 0;
+        }
+        .purchase-order-shell {
+            padding: 24px 30px 30px;
+        }
+        .purchase-order-card {
+            border: 1px solid #ececec;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 4px 14px rgba(0,0,0,.05);
+            padding: 20px;
+        }
+        .purchase-order-list {
+            display: grid;
+            gap: 12px;
+        }
+        .purchase-order-actions .btn,
+        .purchase-order-actions .cart-buy-btn {
+            padding: 10px 16px;
+            font-size: .78rem;
+        }
+        .purchase-empty-state {
+            padding: 12px 4px 4px;
+            color: #777;
+            font-size: .9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .purchase-empty-state i {
+            color: #dc2626;
+        }
+        @media (max-width: 640px) {
+            .purchase-order-shell,
+            .purchase-summary-grid {
+                padding: 16px;
+            }
         }
 
-        .purchase-tab i{
-            font-size:18px;
-            color:#dc2626;
-        }
-
-        .purchase-tab:hover{
-            background:#dc2626;
-            color:white;
-            transform:translateY(-2px);
-        }
-
-        .purchase-tab:hover i{
-            color:white;
-        }
-
-        .purchase-tab.active{
-            background:#dc2626;
-            color:white;
-            box-shadow:0 8px 18px rgba(220,38,38,.25);
-        }
-
-        .purchase-tab.active i{
-            color:white;
-        }
-
-        .tab-count{
-            min-width:22px;
-            height:22px;
-            padding:0 6px;
-            border-radius:50px;
-            background:white;
-            color:#dc2626;
-            font-size:.75rem;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            font-weight:700;
-        }
-
-        .purchase-tab.active .tab-count{
-            background:#fff;
-            color:#dc2626;
-        }
-
+        /* ============================================
+            FOOTER 
+        ============================================ */
         .site-footer {
-            background: var(--black);
-            color: var(--white);
+            background: var(--white);
+            color: var(--black);
             padding: 60px 0 32px;
-            border-top: 2px solid var(--gray-200);
+            border-top: 2px solid var(--black);
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 48px;
             margin-bottom: 48px;
         }
-
-        .footer-brand .logo {
-            color: var(--white);
-            margin-bottom: 12px;
-        }
-
-        .footer-brand .logo span {
-            color: var(--red-600);
-        }
-
+        .footer-brand .logo { color: var(--black); margin-bottom: 12px; }
+        .footer-brand .logo span { color: var(--red-600); }
         .footer-brand p {
             font-size: 0.9rem;
             line-height: 1.7;
             max-width: 300px;
             color: var(--gray-500);
         }
-
         .footer-brand .social {
             display: flex;
             gap: 14px;
             margin-top: 18px;
         }
-
         .footer-brand .social a {
             display: flex;
             align-items: center;
@@ -902,36 +930,26 @@
             transition: var(--transition);
             font-size: 1rem;
         }
-
         .footer-brand .social a:hover {
             background: var(--red-600);
             color: var(--white);
             transform: translateY(-2px);
         }
-
         .footer-col h4 {
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            color: var(--white);
+            color: var(--black);
             margin-bottom: 16px;
         }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
+        .footer-col ul li { margin-bottom: 10px; }
         .footer-col ul li a {
             font-size: 0.9rem;
             color: var(--gray-500);
             transition: var(--transition);
         }
-
-        .footer-col ul li a:hover {
-            color: var(--red-600);
-        }
-
+        .footer-col ul li a:hover { color: var(--red-600); }
         .footer-bottom {
             border-top: 1px solid var(--gray-200);
             padding-top: 24px;
@@ -943,198 +961,348 @@
             font-size: 0.8rem;
             color: var(--gray-500);
         }
-
         .footer-bottom .payment-icons {
             display: flex;
             gap: 12px;
             font-size: 1.2rem;
             color: var(--gray-300);
         }
-
-        /* =========================================
-        RESPONSIVE DESIGN
-        ========================================= */
-
-        /* Laptop */
-        @media (max-width:1024px){
-
-            .profile-page{
-                grid-template-columns:220px 1fr;
-                gap:25px;
-            }
-
-            .profile-info{
-                grid-template-columns:1fr 1fr;
-            }
-
+        /* ============================================
+           CART DRAWER (shared)
+        ============================================ */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(26,26,26,0.5);
+            z-index: 1998;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
         }
-
-        /* Tablet */
-        @media (max-width:868px){
-
-            .profile-page{
-                grid-template-columns:1fr;
-            }
-
-            .profile-sidebar{
-                position:static;
-                width:100%;
-                border-bottom:1px solid #eee;
-                padding-bottom:20px;
-                margin-bottom:10px;
-            }
-
-            .profile-sidebar ul{
-                display:flex;
-                justify-content:center;
-                flex-wrap:wrap;
-                gap:18px;
-            }
-
-            .profile-sidebar li{
-                margin:0;
-            }
-
-            .welcome-card{
-                flex-direction:column;
-                text-align:center;
-                gap:20px;
-            }
-
-            .profile-info{
-                grid-template-columns:1fr;
-            }
-
-            .info-item{
-                border-right:none !important;
-            }
-
-            .purchase-tabs{
-                justify-content:center;
-            }
-
-            .footer-grid{
-                grid-template-columns:repeat(2,1fr);
-            }
-
+        .cart-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
         }
-
-        /* Mobile */
-        @media (max-width:640px){
-
-            .container,
-            .profile-page{
-                padding:0 15px;
-            }
-
-            .header-inner{
-                padding:0 15px;
-            }
-
-            .logo{
-                font-size:1.3rem;
-            }
-
-            .welcome-card{
-                padding:20px;
-            }
-
-            .profile-card-header{
-                flex-direction:column;
-                align-items:flex-start;
-                gap:15px;
-            }
-
-            .purchase-tabs{
-                display:grid;
-                grid-template-columns:repeat(2,1fr);
-                gap:10px;
-            }
-
-            .purchase-tab{
-                width:100%;
-                justify-content:center;
-            }
-
-            .orders-card{
-                overflow-x:auto;
-            }
-
-            .orders-table{
-                min-width:700px;
-            }
-
-            .address-box{
-                width:95%;
-                padding:20px;
-            }
-
-            .two-column{
-                grid-template-columns:1fr;
-            }
-
-            .footer-grid{
-                grid-template-columns:1fr;
-            }
-
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 420px;
+            max-width: 92vw;
+            background: var(--white);
+            z-index: 1999;
+            transform: translateX(100%);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
         }
+        .cart-drawer.open { transform: translateX(0); }
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 24px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .cart-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+        }
+        .cart-header button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--gray-500);
+            transition: var(--transition);
+        }
+        .cart-header button:hover { color: var(--red-600); }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px 24px;
+        }
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-500);
+        }
+        .cart-empty i {
+            font-size: 2.4rem;
+            color: var(--gray-300);
+            margin-bottom: 14px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 14px;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .cart-item .thumb {
+            width: 72px;
+            height: 88px;
+            border-radius: 6px;
+            background: linear-gradient(145deg, var(--gray-200), #d1d5db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-300);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .cart-item .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .cart-item .thumb .fallback {
+            position: absolute;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, var(--gray-200), #d1d5db);
+            color: var(--gray-300);
+            font-size: 1.4rem;
+        }
+        .cart-item .info { flex: 1; display: flex; flex-direction: column; }
+        .cart-item .info h5 {
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .cart-item .info .meta {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+        }
+        .cart-item .info .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+        .qty-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+        }
+        .qty-control button {
+            width: 26px;
+            height: 26px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--black);
+        }
+        .qty-control button:hover { color: var(--red-600); }
+        .qty-control span {
+            width: 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .cart-item .price { font-size: 0.9rem; font-weight: 600; }
+        .cart-item .remove-btn {
+            background: none;
+            border: none;
+            color: var(--gray-500);
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        .cart-item .remove-btn:hover { color: var(--red-600); }
+        .cart-footer {
+            padding: 20px 24px 24px;
+            border-top: 1px solid var(--gray-200);
+        }
+        .cart-subtotal {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .cart-footer .note {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+        }
+        .cart-footer .btn { width: 100%; }
 
-        /* Small Phones */
-        @media (max-width:420px){
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--black);
+            color: var(--white);
+            padding: 14px 24px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2100;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast i { color: var(--red-600); }
 
-            .profile-picture{
-                width:140px;
-                height:140px;
+        /* ============================================
+           RESPONSIVE (profile + cart)
+        ============================================ */
+        @media (max-width: 1024px) {
+            .profile-page { grid-template-columns: 200px 1fr; gap: 30px; }
+            .profile-info { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 868px) {
+            .profile-page { grid-template-columns: 1fr; gap: 30px; }
+            .purchase-preview-grid { grid-template-columns: 1fr; }
+            .profile-sidebar {
+                position: static;
+                width: 100%;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 20px;
+                margin-bottom: 10px;
             }
-
-            .profile-picture-wrapper{
-                width:140px;
-                height:140px;
+            .profile-sidebar ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 18px 30px;
+                justify-content: center;
             }
-
-            #profilePictureName{
-                font-size:1.1rem;
+            .profile-sidebar li { margin: 0; }
+            .welcome-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                align-items: center;
             }
-
-            .purchase-tabs{
-                grid-template-columns:1fr;
+            .profile-info { grid-template-columns: 1fr; }
+            .info-item { border-right: none !important; }
+            .purchase-tabs { justify-content: center; }
+            .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+            .footer-brand { grid-column: 1 / -1; max-width: 520px; }
+            .footer-brand p { max-width: 420px; }
+        }
+        @media (max-width: 640px) {
+            .container, .profile-page { padding: 0 15px; }
+            .purchase-preview-grid { padding: 16px; }
+            .header-inner { padding: 0 15px; }
+            .profile-page { margin-top: 100px; margin-bottom: 40px; }
+            .welcome-card { padding: 20px; }
+            .welcome-card h2 { font-size: 1.4rem; }
+            .profile-card-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
             }
-
-            .purchase-tab{
-                font-size:.9rem;
-                padding:12px;
+            .profile-card-header .edit-btn { width: 100%; justify-content: center; }
+            .profile-picture-wrapper { width: 140px; height: 140px; }
+            .profile-picture { width: 140px; height: 140px; }
+            .camera-btn { width: 38px; height: 38px; font-size: 15px; bottom: 6px; right: 6px; }
+            #profilePictureName { font-size: 1.1rem; }
+            .purchase-tabs {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-top: 15px;
             }
-
-            .tab-count{
-                min-width:20px;
-                height:20px;
-                font-size:.7rem;
+            .purchase-tab {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 16px;
+                font-size: 0.9rem;
             }
-
-            .shop-btn,
-            .edit-btn,
-            .btn{
-                width:100%;
-                text-align:center;
+            .orders-card { overflow-x: auto; }
+            .orders-table { min-width: 600px; font-size: 0.85rem; }
+            .orders-table th, .orders-table td { padding: 12px 10px; }
+            .address-box { width: 95%; padding: 20px; }
+            .two-column { grid-template-columns: 1fr; }
+            .address-footer { flex-direction: column; }
+            .address-footer .cancel-btn, .address-footer .save-btn { width: 100%; text-align: center; }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-bottom: 32px;
             }
-
-            .footer-bottom{
-                flex-direction:column;
-                text-align:center;
-                gap:15px;
+            .footer-brand {
+                grid-column: auto;
+                max-width: none;
+                text-align: center;
             }
-
+            .footer-brand .social {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .footer-brand p {
+                max-width: none;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .footer-col {
+                text-align: center;
+            }
+            .footer-col h4 { margin-bottom: 12px; }
+            .footer-col ul li { margin-bottom: 8px; }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+            }
+            .footer-bottom .payment-icons {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .shop-btn, .edit-btn, .btn { width: 100%; text-align: center; justify-content: center; }
+            .profile-info .info-item { padding: 16px 20px; }
+            .card-header { padding: 16px 20px; }
+            .card-header h3 { font-size: 1.1rem; }
+            .cart-drawer { width: 100%; max-width: 100vw; }
+        }
+        @media (max-width: 420px) {
+            .purchase-tabs { grid-template-columns: 1fr; }
+            .profile-picture-wrapper { width: 120px; height: 120px; }
+            .profile-picture { width: 120px; height: 120px; }
+            .tab-count { min-width: 20px; height: 20px; font-size: .7rem; }
+            .address-box { padding: 16px; }
+            .address-header h2 { font-size: 1.4rem; }
+            .site-footer { padding: 48px 0 22px; }
+            .footer-brand .social { justify-content: center; flex-wrap: wrap; gap: 10px; }
+            .footer-col h4 { margin-bottom: 12px; }
+            .footer-col ul li { margin-bottom: 8px; }
+            .footer-bottom { gap: 10px; }
+            .footer-bottom .payment-icons { justify-content: center; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ============================================================
+         HEADER — with cart toggle button
+    ============================================================ -->
     <header class="site-header" id="siteHeader">
         <div class="header-inner">
-
             <a href="index.html" class="logo" aria-label="Jag Jeans Home">
-                <i class="fas fa-gem logo-icon" aria-hidden="true"></i>
-                Jag<span>Jeans</span>
+                <img src="images/logo.png" alt="Jag Jeans – Premium Denim" />
             </a>
 
             <nav class="nav-links" id="navLinks" aria-label="Main navigation">
@@ -1145,228 +1313,164 @@
             </nav>
 
             <div class="header-utils">
-                <a href="profile.html" class="icon-btn" aria-label="My Account">
+                <a href="shop.html" class="icon-btn" aria-label="Search">
                     <i class="fas fa-search" aria-hidden="true"></i>
                 </a>
-                 <a href="profile.html" class="icon-btn" aria-label="My Account">
+                <a href="profile.html" class="icon-btn" aria-label="My Account">
                     <i class="fas fa-user" aria-hidden="true"></i>
                 </a>
-                <a href="shop.html" class="icon-btn" aria-label="Shopping cart">
+                <!-- Cart button – opens drawer -->
+                <button class="icon-btn" id="cartToggle" aria-label="Shopping cart">
                     <i class="fas fa-shopping-bag" aria-hidden="true"></i>
-                    <span class="cart-count">3</span>
-                </a>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
                     <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
-
         </div>
     </header>
 
+    <!-- ============================================================
+         PROFILE PAGE CONTENT (unchanged)
+    ============================================================ -->
     <section class="profile-page">
 
         <aside class="profile-sidebar">
-
             <ul>
                 <li>
                     <a href="#my-purchases" id="ordersLink">
-                        <i class="fas fa-box"></i>
-                        Orders
+                        <i class="fas fa-box"></i> Orders
                     </a>
                 </li>
-
                 <li>
                     <a href="#profile-details" id="profileLink">
-                        <i class="fas fa-user"></i>
-                        Profile
+                        <i class="fas fa-user"></i> Profile
                     </a>
                 </li>
             </ul>
-
         </aside>
 
         <main class="profile-content">
 
+            <!-- Welcome Card -->
             <div class="welcome-card">
-
                 <div>
                     <h2>Welcome, <span id="welcomeName">Ms. Reina</span></h2>
                     <p>Ready to shop?</p>
                 </div>
-
-                <a href="shop.html" class="shop-btn">
-                    Shop now
-                </a>
-
+                <a href="shop.html" class="shop-btn">Shop now</a>
             </div>
-                <div class="profile-card" id="profile-details">
 
-                    <div class="profile-card-header">
-                        <h3>Profile Details</h3>
+            <!-- Profile Details -->
+            <div class="profile-card" id="profile-details">
+                <div class="profile-card-header">
+                    <h3>Profile Details</h3>
+                    <button class="edit-btn" id="editProfileBtn">
+                        <i class="fas fa-pen"></i> Edit
+                    </button>
+                </div>
 
-                        <button class="edit-btn" id="editProfileBtn">
-                            <i class="fas fa-pen"></i>
-                            Edit
-                        </button>
+                <div class="profile-picture-section">
+                    <div class="profile-picture-wrapper">
+                        <img
+                            src="https://placehold.co/180x180?text=Profile"
+                            id="profileImage"
+                            class="profile-picture"
+                            alt="Profile Picture">
+                        <label for="profileUpload" class="camera-btn">
+                            <i class="fas fa-camera"></i>
+                        </label>
+                        <input
+                            type="file"
+                            id="profileUpload"
+                            accept="image/*"
+                            hidden>
                     </div>
+                    <h4 id="profilePictureName">Ms. Reina</h4>
+                </div>
 
-                    <div class="profile-picture-section">
-
-                        <div class="profile-picture-wrapper">
-
-                            <img
-                                src="https://placehold.co/180x180?text=Profile"
-                                id="profileImage"
-                                class="profile-picture"
-                                alt="Profile Picture">
-
-                            <label for="profileUpload" class="camera-btn">
-                                <i class="fas fa-camera"></i>
-                            </label>
-
-                            <input
-                                type="file"
-                                id="profileUpload"
-                                accept="image/*"
-                                hidden>
-
-                        </div>
-
-                        <h4 id="profilePictureName">Ms. Reina</h4>
-
-                    </div>
-
-                    <div class="profile-info">
-
-                    <div class="info-item">                     
+                <div class="profile-info">
+                    <div class="info-item">
                         <span class="label">Full Name</span>
                         <span class="value" id="fullName" contenteditable="false">Ms. Reina</span>
                     </div>
-
                     <div class="info-item">
                         <span class="label">Email</span>
                         <span class="value" id="email" contenteditable="false">Sample@gmail.com</span>
                     </div>
-
                     <div class="info-item">
                         <span class="label">Phone</span>
                         <span class="value" id="phone" contenteditable="false">+63 912 345 6789</span>
                     </div>
-
                     <div class="info-item">
                         <span class="label">Birthday</span>
                         <span class="value" id="birthday" contenteditable="false">January 15, 2006</span>
                     </div>
-
                     <div class="info-item">
                         <span class="label">Gender</span>
                         <span class="value" id="gender" contenteditable="false">Female</span>
                     </div>
-
                     <div class="info-item">
                         <span class="label">Member Since</span>
                         <span class="value" id="memberSince" contenteditable="false">July 2026</span>
                     </div>
-
-                    </div>
-
                 </div>
+            </div>
 
+            <!-- Address Book -->
             <div class="profile-card">
-
                 <div class="profile-card-header">
                     <h3>Address Book</h3>
-
                     <button class="edit-btn" id="openAddressModal">
-                        <i class="fas fa-plus"></i>
-                        Add Address
+                        <i class="fas fa-plus"></i> Add Address
                     </button>
                 </div>
 
-                <div id="savedAddressCard" style="display:none;padding:25px;">
+                <div id="savedAddressCard" style="display:none; padding:25px;">
                     <h4 id="savedRecipient"></h4>
                     <p id="savedPhone"></p>
                     <p id="savedFullAddress"></p>
-
                     <div style="margin-top:15px;">
                         <button class="edit-btn" id="editAddressBtn">
                             <i class="fas fa-edit"></i> Edit
                         </button>
-
                         <button class="edit-btn" id="deleteAddressBtn">
                             <i class="fas fa-trash"></i> Delete
                         </button>
                     </div>
                 </div>
-
             </div>
 
+            <!-- Address Modal -->
             <div class="address-modal" id="addressModal">
-
                 <div class="address-box">
-
                     <div class="address-header">
-
                         <h2>Add Address</h2>
-
                         <button class="close-address" id="closeAddressModal">
                             <i class="fas fa-times"></i>
                         </button>
-
                     </div>
 
                     <form id="addressForm">
-
                         <select class="address-input" id="country">
                             <option>Philippines</option>
                         </select>
 
                         <div class="two-column">
-
-                            <input
-                                type="text"
-                                id="firstName"
-                                class="address-input"
-                                placeholder="First name">
-
-                            <input
-                                type="text"
-                                id="lastName"
-                                class="address-input"
-                                placeholder="Last name">
-
+                            <input type="text" id="firstName" class="address-input" placeholder="First name">
+                            <input type="text" id="lastName" class="address-input" placeholder="Last name">
                         </div>
 
-                        <input
-                            type="text"
-                            id="street"
-                            class="address-input"
-                            placeholder="Address">
-
-                        <input
-                            type="text"
-                            id="apartment"
-                            class="address-input"
-                            placeholder="Apartment, suite, etc.">
+                        <input type="text" id="street" class="address-input" placeholder="Address">
+                        <input type="text" id="apartment" class="address-input" placeholder="Apartment, suite, etc.">
 
                         <div class="two-column">
-
-                            <input
-                                type="text"
-                                id="postal"
-                                class="address-input"
-                                placeholder="Postal code">
-
-                            <input
-                                type="text"
-                                id="city"
-                                class="address-input"
-                                placeholder="City">
-
+                            <input type="text" id="postal" class="address-input" placeholder="Postal code">
+                            <input type="text" id="city" class="address-input" placeholder="City">
                         </div>
 
                         <select class="address-input" id="region">
-
                             <option>Abra</option>
                             <option>Agusan del Norte</option>
                             <option>Agusan del Sur</option>
@@ -1382,364 +1486,436 @@
                             <option>Pampanga</option>
                             <option>Quezon</option>
                             <option>Rizal</option>
-
                         </select>
 
                         <div class="phone-row">
-
                             <span>+63</span>
-
-                            <input
-                                type="tel"
-                                id="phoneNumber"
-                                class="address-input"
-                                maxlength="10"
-                                placeholder="9123456789">
-
+                            <input type="tel" id="phoneNumber" class="address-input" maxlength="10" placeholder="9123456789">
                         </div>
 
                         <div style="margin:15px 0;">
-
                             <label>
-
                                 <input type="checkbox" id="defaultAddress">
-
                                 This is my default address
-
                             </label>
-
                         </div>
 
-                        <button
-                            type="button"
-                            class="edit-btn"
-                            id="copyProfileInfo">
-
-                            <i class="fas fa-copy"></i>
-
-                            Use Profile Details
-
+                        <button type="button" class="edit-btn" id="copyProfileInfo">
+                            <i class="fas fa-copy"></i> Use Profile Details
                         </button>
 
                         <div class="address-footer">
-
-                            <button
-                                type="button"
-                                class="cancel-btn"
-                                id="cancelAddress">
-
-                                Cancel
-
-                            </button>
-
-                            <button
-                                type="submit"
-                                class="save-btn">
-
-                                Save
-
-                            </button>
-
+                            <button type="button" class="cancel-btn" id="cancelAddress">Cancel</button>
+                            <button type="submit" class="save-btn">Save</button>
                         </div>
-
                     </form>
+                </div>
+            </div>
 
+            <!-- My Purchases -->
+            <div class="card-header">
+                <h3 id="my-purchases">My Purchases</h3>
+                <div class="purchase-tabs">
+                    <button class="purchase-tab active" data-tab="all">
+                        <i class="fas fa-border-all"></i> <span>All</span>
+                        <span class="tab-count" id="allCount">0</span>
+                    </button>
+                    <button class="purchase-tab" data-tab="cart">
+                        <i class="fas fa-shopping-cart"></i> <span>Cart</span>
+                        <span class="tab-count" id="cartCountBadge">0</span>
+                    </button>
+                    <button class="purchase-tab" data-tab="wishlist">
+                        <i class="fas fa-heart"></i> <span>Wishlist</span>
+                        <span class="tab-count" id="wishlistCountBadge">0</span>
+                    </button>
+                    <button class="purchase-tab" data-tab="pay">
+                        <i class="fas fa-credit-card"></i> <span>To Pay</span>
+                        <span class="tab-count">1</span>
+                    </button>
+                    <button class="purchase-tab" data-tab="ship">
+                        <i class="fas fa-truck"></i> <span>To Ship</span>
+                        <span class="tab-count">1</span>
+                    </button>
+                    <button class="purchase-tab" data-tab="receive">
+                        <i class="fas fa-box-open"></i> <span>To Receive</span>
+                        <span class="tab-count">1</span>
+                    </button>
+                    <button class="purchase-tab" data-tab="rate">
+                        <i class="fas fa-star"></i> <span>To Rate</span>
+                        <span class="tab-count">1</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="orders-card">
+                <div id="allOrders" class="order-section active-section">
+                    <div class="purchase-summary-grid">
+                        <div class="purchase-summary-card">
+                            <h4>Cart items</h4>
+                            <div class="summary-meta" id="allCartMeta">0 items saved in your cart.</div>
+                            <div class="purchase-list" id="allCartList"></div>
+                        </div>
+                        <div class="purchase-summary-card">
+                            <h4>Wishlist items</h4>
+                            <div class="summary-meta" id="allWishlistMeta">0 items saved to wishlist.</div>
+                            <div class="purchase-list" id="allWishlistList"></div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div id="cartOrders" class="order-section">
+                    <div class="purchase-summary-card" style="margin: 24px;">
+                        <div class="purchase-section-head">
+                            <div>
+                                <h4>Cart</h4>
+                                <div class="summary-meta" id="cartOrdersMeta">0 items saved in your cart.</div>
+                            </div>
+                        </div>
+                        <div class="purchase-list" id="cartPurchaseList"></div>
+                    </div>
                 </div>
 
+                <div id="wishlistOrders" class="order-section">
+                    <div class="purchase-summary-card" style="margin: 24px;">
+                        <h4>Wishlist</h4>
+                        <div class="summary-meta" id="wishlistOrdersMeta">0 items saved to wishlist.</div>
+                        <div class="purchase-list" id="wishlistPurchaseList"></div>
+                    </div>
+                </div>
+
+                <div id="payOrders" class="order-section">
+                    <div class="purchase-order-shell">
+                        <div class="purchase-order-card">
+                            <div class="purchase-section-head">
+                                <div>
+                                    <h4>To Pay</h4>
+                                    <div class="summary-meta">Ready for checkout from your saved cart items.</div>
+                                </div>
+                            </div>
+                            <div class="purchase-order-list" id="payList"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="shipOrders" class="order-section">
+                    <div class="purchase-order-shell">
+                        <div class="purchase-order-card">
+                            <div class="purchase-section-head">
+                                <div>
+                                    <h4>To Ship</h4>
+                                    <div class="summary-meta">Orders confirmed and waiting to be shipped.</div>
+                                </div>
+                            </div>
+                            <div class="purchase-order-list" id="shipList"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="receiveOrders" class="order-section">
+                    <div class="purchase-order-shell">
+                        <div class="purchase-order-card">
+                            <div class="purchase-section-head">
+                                <div>
+                                    <h4>To Receive</h4>
+                                    <div class="summary-meta">Orders on the way with product photos from Shop.</div>
+                                </div>
+                            </div>
+                            <div class="purchase-order-list" id="receiveList"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rateOrders" class="order-section">
+                    <div class="purchase-order-shell">
+                        <div class="purchase-order-card">
+                            <div class="purchase-section-head">
+                                <div>
+                                    <h4>To Rate</h4>
+                                    <div class="summary-meta">Recently delivered items waiting for your feedback.</div>
+                                </div>
+                            </div>
+                            <div class="purchase-order-list" id="rateList"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="card-header">
-                
-            <h3 id="my-purchases">My Purchases</h3>
-            <div class="purchase-tabs">
-
-                <button class="purchase-tab active" data-tab="all">
-                    <i class="fas fa-border-all"></i>
-                    <span>All</span>
-                    <span class="tab-count">5</span>
-                </button>
-
-                <button class="purchase-tab" data-tab="cart">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>Cart</span>
-                    <span class="tab-count">1</span>
-                </button>
-
-                <button class="purchase-tab" data-tab="pay">
-                    <i class="fas fa-credit-card"></i>
-                    <span>To Pay</span>
-                    <span class="tab-count">1</span>
-                </button>
-
-                <button class="purchase-tab" data-tab="ship">
-                    <i class="fas fa-truck"></i>
-                    <span>To Ship</span>
-                    <span class="tab-count">1</span>
-                </button>
-
-                <button class="purchase-tab" data-tab="receive">
-                    <i class="fas fa-box-open"></i>
-                    <span>To Receive</span>
-                    <span class="tab-count">1</span>
-                </button>
-
-                <button class="purchase-tab" data-tab="rate">
-                    <i class="fas fa-star"></i>
-                    <span>To Rate</span>
-                    <span class="tab-count">1</span>
-                </button>
-
-            </div>
-            <div class="orders-card">
-
-    <div class="card-header" i>
-
-        <div class="purchase-tabs">
-        <div id="allOrders" class="order-section active-section">
-
-            <table class="orders-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th>Order #</th>
-                        <th>Product</th>
-                        <th>Status</th>
-                        <th>Action</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>#JG1001</td>
-                        <td>Classic Slim Jeans</td>
-                        <td><span class="status processing">To Pay</span></td>
-                        <td><button class="btn btn-primary">Pay Now</button></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>#JG1002</td>
-                        <td>Black Denim Jacket</td>
-                        <td><span class="status shipped">To Ship</span></td>
-                        <td><button class="btn btn-primary">Track</button></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>#JG1003</td>
-                        <td>Relaxed Fit Jeans</td>
-                        <td><span class="status delivered">To Receive</span></td>
-                        <td><button class="btn btn-primary">Confirm</button></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>#JG1004</td>
-                        <td>Oversized T-Shirt</td>
-                        <td><span class="status delivered">To Rate</span></td>
-                        <td><button class="btn btn-primary">Rate</button></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>#JG1005</td>
-                        <td>Slim Fit Polo</td>
-                        <td><span class="status processing">Cart</span></td>
-                        <td><button class="btn btn-primary">Checkout</button></td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <div id="payOrders" class="order-section">
-
-            <table class="orders-table">
-
-                <tbody>
-
-                    <tr>
-
-                        <td>#JG1001</td>
-                        <td>Classic Slim Jeans</td>
-                        <td><span class="status processing">Awaiting Payment</span></td>
-                        <td><button class="btn btn-primary">Pay Now</button></td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <div id="shipOrders" class="order-section">
-
-            <table class="orders-table">
-
-                <tbody>
-
-                    <tr>
-
-                        <td>#JG1002</td>
-                        <td>Black Denim Jacket</td>
-                        <td><span class="status shipped">Preparing Shipment</span></td>
-                        <td><button class="btn btn-primary">Track Order</button></td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <div id="receiveOrders" class="order-section">
-
-            <table class="orders-table">
-
-                <tbody>
-
-                    <tr>
-
-                        <td>#JG1003</td>
-                        <td>Relaxed Fit Jeans</td>
-                        <td><span class="status delivered">Out for Delivery</span></td>
-                        <td><button class="btn btn-primary">Confirm Receipt</button></td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <div id="rateOrders" class="order-section">
-
-            <table class="orders-table">
-
-                <tbody>
-
-                    <tr>
-
-                        <td>#JG1004</td>
-                        <td>Oversized T-Shirt</td>
-                        <td><span class="status delivered">Delivered</span></td>
-                        <td><button class="btn btn-primary">⭐ Rate Product</button></td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <div id="cartOrders" class="order-section">
-
-            <table class="orders-table">
-
-                <tbody>
-
-                    <tr>
-
-                        <td>#JG1005</td>
-                        <td>Slim Fit Polo (Qty: 2)</td>
-                        <td>₱1,498</td>
-                        <td><button class="btn btn-primary">Checkout</button></td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-        </div>
-
+        </main>
     </section>
 
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <!-- ===== FOOTER (unchanged) ===== -->
     <footer class="site-footer" role="contentinfo">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo" aria-label="Jag Jeans Home">
-                        <i class="fas fa-gem logo-icon" aria-hidden="true"></i>
-                        Jag<span>Jeans</span>
+                        <img src="images/logo.png" alt="">
                     </a>
-                    <p>
-                        Premium denim &amp; lifestyle for those who value fit, quality,
-                        and timeless style.
-                    </p>
+                    <p>Premium denim &amp; lifestyle for those who value fit, quality, and timeless style.</p>
                     <div class="social">
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-
-                <div class="footer-col">
-                    <h4>Shop</h4>
-                    <ul>
-                        <li><a href="shop.html">New Arrivals</a></li>
-                        <li><a href="shop.html">Best Sellers</a></li>
-                        <li><a href="shop.html">Sale</a></li>
-                        <li><a href="shop.html">Collections</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help &amp; FAQs</a></li>
-                        <li><a href="#">Shipping &amp; Returns</a></li>
-                        <li><a href="#">Size Guide</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="#">Sustainability</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
+                <div class="footer-col"><h4>Shop</h4><ul><li><a href="shop.html">New Arrivals</a></li><li><a href="shop.html">Best Sellers</a></li><li><a href="shop.html">Sale</a></li><li><a href="shop.html">Collections</a></li></ul></div>
+                <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help &amp; FAQs</a></li><li><a href="#">Shipping &amp; Returns</a></li><li><a href="#">Size Guide</a></li><li><a href="#">Contact Us</a></li></ul></div>
+                <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="#">Sustainability</a></li><li><a href="#">Careers</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
             </div>
-
             <div class="footer-bottom">
-                <span>&copy; 2026 Jag Jeans. All rights reserved.</span>
-                <div class="payment-icons" aria-label="Accepted payment methods">
-                    <i class="fab fa-cc-visa" aria-hidden="true"></i>
-                    <i class="fab fa-cc-mastercard" aria-hidden="true"></i>
-                    <i class="fab fa-cc-amex" aria-hidden="true"></i>
-                    <i class="fab fa-cc-paypal" aria-hidden="true"></i>
-                    <i class="fab fa-cc-apple-pay" aria-hidden="true"></i>
-                </div>
+                <span>&copy; 2026 Jag. All rights reserved.</span>
+                <div class="payment-icons"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-amex"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-cc-apple-pay"></i></div>
             </div>
         </div>
     </footer>
 
+  
+    <!-- ============================================================
+         CART DRAWER & TOAST
+    ============================================================ -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+        <div class="cart-header">
+            <h3>Your Bag</h3>
+            <button id="closeCartBtn" aria-label="Close cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty.</p></div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+            <p class="note">Shipping and taxes calculated at checkout.</p>
+            <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+        </div>
+    </aside>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-circle-check"></i>
+        <span id="toastMessage">Added to bag</span>
+    </div>
+
+    <!-- ============================================================
+         JAVASCRIPT — profile logic + shared cart
+    ============================================================ -->
     <script>
+        // --- Shared Cart Logic (identical across all pages) ---
+        (function() {
+            'use strict';
+
+            // DOM refs
+            const cartCountEl = document.getElementById('cartCount');
+            const cartItemsEl = document.getElementById('cartItems');
+            const cartSubtotalEl = document.getElementById('cartSubtotal');
+            const cartDrawer = document.getElementById('cartDrawer');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const toastEl = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            let toastTimer;
+
+            function formatPrice(n) { return '$' + n.toFixed(2); }
+
+            function getCart() {
+                try { return JSON.parse(localStorage.getItem('cart')) || []; }
+                catch { return []; }
+            }
+            function saveCart(cart) {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            function renderCart() {
+                const cart = getCart();
+                const totalQty = cart.reduce(function(sum, item) { return sum + item.qty; }, 0);
+                cartCountEl.textContent = totalQty;
+
+                if (cart.length === 0) {
+                    cartItemsEl.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty.</p></div>';
+                    cartSubtotalEl.textContent = formatPrice(0);
+                    return;
+                }
+
+                let subtotal = 0;
+                let html = '';
+                cart.forEach(function(item) {
+                    subtotal += item.price * item.qty;
+                    const thumbHtml = item.img
+                        ? `<img src="${item.img}" alt="${item.name}" onerror="this.style.display='none';if(this.nextElementSibling){this.nextElementSibling.style.display='flex';}"><div class="fallback"><i class="fas ${item.icon || 'fa-tshirt'}"></i></div>`
+                        : `<i class="fas ${item.icon || 'fa-tshirt'}"></i>`;
+                    html += `
+                        <div class="cart-item" data-id="${item.id}">
+                            <div class="thumb">${thumbHtml}</div>
+                            <div class="info">
+                                <h5>${item.name}</h5>
+                                <div class="meta">Jag Jeans</div>
+                                <div class="row">
+                                    <div class="qty-control">
+                                        <button data-qty-minus="${item.id}">-</button>
+                                        <span>${item.qty}</span>
+                                        <button data-qty-plus="${item.id}">+</button>
+                                    </div>
+                                    <span class="price">${formatPrice(item.price * item.qty)}</span>
+                                </div>
+                            </div>
+                            <button class="remove-btn" data-remove="${item.id}"><i class="fas fa-trash"></i></button>
+                        </div>
+                    `;
+                });
+
+                cartItemsEl.innerHTML = html;
+                cartSubtotalEl.textContent = formatPrice(subtotal);
+            }
+
+            function addToCart(productId, productName, productPrice, productIcon, productImg) {
+                let cart = getCart();
+                const existing = cart.find(function(c) { return c.id === productId; });
+                if (existing) {
+                    existing.qty += 1;
+                    if (productImg && !existing.img) existing.img = productImg;
+                } else {
+                    cart.push({ id: productId, name: productName, price: productPrice, icon: productIcon || 'fa-tshirt', img: productImg || '', qty: 1 });
+                }
+                saveCart(cart);
+                renderCart();
+                bumpCartCount();
+                showToast(productName + ' added to bag');
+            }
+
+            function changeQty(productId, delta) {
+                let cart = getCart();
+                const item = cart.find(function(c) { return c.id === productId; });
+                if (!item) return;
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    cart = cart.filter(function(c) { return String(c.id) !== String(productId); });
+                }
+                saveCart(cart);
+                renderCart();
+            }
+
+            function removeFromCart(productId) {
+                let cart = getCart();
+                const targetId = String(productId);
+                cart = cart.filter(function(c) { return String(c.id) !== targetId; });
+                saveCart(cart);
+                renderCart();
+                if (typeof renderPurchaseDashboard === 'function') {
+                    renderPurchaseDashboard();
+                }
+            }
+
+            function removePurchaseItem(collection, productId) {
+                try {
+                    const normalizedCollection = String(collection || '');
+                    const targetId = String(productId);
+                    const escapedId = targetId.replace(/"/g, '\"');
+                    const removeVisibleCards = function() {
+                        document.querySelectorAll('[data-purchase-item="' + escapedId + '"]').forEach(function(card) {
+                            card.remove();
+                        });
+                        document.querySelectorAll('[data-purchase-remove="' + escapedId + '"]').forEach(function(btn) {
+                            const card = btn.closest('.purchase-item');
+                            if (card) card.remove();
+                        });
+                    };
+
+                    if (normalizedCollection === 'cart') {
+                        const cart = getCart().filter(function(item) {
+                            return String(item.id) !== targetId;
+                        });
+                        saveCart(cart);
+                        removeVisibleCards();
+                        renderCart();
+                        if (typeof renderPurchaseDashboard === 'function') {
+                            renderPurchaseDashboard();
+                        }
+                        return;
+                    }
+
+                    if (normalizedCollection === 'wishlist') {
+                        let items = JSON.parse(localStorage.getItem('wishlist')) || [];
+                        const nextItems = items.filter(function(item) {
+                            return String(item.id) !== targetId;
+                        });
+                        localStorage.setItem('wishlist', JSON.stringify(nextItems));
+                        removeVisibleCards();
+                        renderCart();
+                        if (typeof renderPurchaseDashboard === 'function') {
+                            renderPurchaseDashboard();
+                        }
+                        return;
+                    }
+
+                    let items = JSON.parse(localStorage.getItem(normalizedCollection)) || [];
+                    const nextItems = items.filter(function(item) {
+                        return String(item.id) !== targetId;
+                    });
+                    localStorage.setItem(normalizedCollection, JSON.stringify(nextItems));
+                    removeVisibleCards();
+                    renderCart();
+                    if (typeof renderPurchaseDashboard === 'function') {
+                        renderPurchaseDashboard();
+                    }
+                } catch (err) {
+                    console.error('Unable to remove saved item', err);
+                }
+            }
+
+            function bumpCartCount() {
+                cartCountEl.classList.add('bump');
+                setTimeout(function() { cartCountEl.classList.remove('bump'); }, 250);
+            }
+
+            function showToast(msg) {
+                toastMessage.textContent = msg;
+                toastEl.classList.add('show');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(function() { toastEl.classList.remove('show'); }, 2200);
+            }
+
+            function openCart() {
+                cartDrawer.classList.add('open');
+                cartOverlay.classList.add('open');
+            }
+            function closeCart() {
+                cartDrawer.classList.remove('open');
+                cartOverlay.classList.remove('open');
+            }
+
+            // Wire up cart events
+            document.getElementById('cartToggle').addEventListener('click', openCart);
+            document.getElementById('closeCartBtn').addEventListener('click', closeCart);
+            cartOverlay.addEventListener('click', closeCart);
+            document.getElementById('checkoutBtn').addEventListener('click', function() {
+                const cart = getCart();
+                if (cart.length === 0) {
+                    showToast('Your bag is empty');
+                    return;
+                }
+                showToast('This is a demo — checkout is not connected');
+            });
+
+            cartItemsEl.addEventListener('click', function(e) {
+                const plus = e.target.closest('[data-qty-plus]');
+                const minus = e.target.closest('[data-qty-minus]');
+                const remove = e.target.closest('[data-remove]');
+                if (plus) changeQty(parseInt(plus.getAttribute('data-qty-plus'), 10), 1);
+                if (minus) changeQty(parseInt(minus.getAttribute('data-qty-minus'), 10), -1);
+                if (remove) removeFromCart(parseInt(remove.getAttribute('data-remove'), 10));
+            });
+
+            // Make helpers available to the outer page logic
+            window.showToast = showToast;
+            window.removePurchaseItem = removePurchaseItem;
+            window.renderCart = renderCart;
+
+            // Initial render
+            renderCart();
+        })();
+
         /* ==========================================================
         PROFILE DETAILS + PROFILE PICTURE
         ========================================================== */
@@ -1766,311 +1942,146 @@
         let profileData = {};
 
         try {
-
-            profileData =
-                JSON.parse(localStorage.getItem("profileData")) || {};
-
+            profileData = JSON.parse(localStorage.getItem("profileData")) || {};
         } catch {
-
             profileData = {};
-
         }
 
         fields.forEach(field => {
-
             const element = document.getElementById(field.id);
-
             if (profileData[field.id]) {
-
                 element.textContent = profileData[field.id];
-
             }
-
         });
 
-        welcomeName.textContent =
-        document.getElementById("fullName").textContent;
+        welcomeName.textContent = document.getElementById("fullName").textContent;
+        pictureName.textContent = document.getElementById("fullName").textContent;
 
-        pictureName.textContent =
-        document.getElementById("fullName").textContent;
-
-        const savedPicture =
-        localStorage.getItem("profilePicture");
-
+        const savedPicture = localStorage.getItem("profilePicture");
         if (savedPicture) {
-
             profileImage.src = savedPicture;
-
         }
 
         profileUpload.addEventListener("change", function () {
-
             if (!editing) {
-
                 this.value = "";
                 return;
-
             }
-
             const file = this.files[0];
-
             if (!file) return;
-
             const reader = new FileReader();
-
             reader.onload = function (e) {
-
                 profileImage.src = e.target.result;
-
-                localStorage.setItem(
-                    "profilePicture",
-                    e.target.result
-                );
-
+                localStorage.setItem("profilePicture", e.target.result);
             };
-
             reader.readAsDataURL(file);
-
         });
 
         editBtn.addEventListener("click", () => {
-
             if (!editing) {
-
                 fields.forEach(field => {
-
                     if (field.type === "readonly") return;
-
-                    const element =
-                    document.getElementById(field.id);
-
-                    const value =
-                    element.textContent.trim();
-
+                    const element = document.getElementById(field.id);
+                    const value = element.textContent.trim();
                     let input;
-
                     switch (field.type) {
-
                         case "text":
-
-                            input =
-                            document.createElement("input");
-
+                            input = document.createElement("input");
                             input.type = "text";
                             input.value = value;
-
                             break;
-
                         case "email":
-
-                            input =
-                            document.createElement("input");
-
+                            input = document.createElement("input");
                             input.type = "email";
                             input.required = true;
                             input.value = value;
-
                             break;
-
                         case "number":
-
-                            input =
-                            document.createElement("input");
-
+                            input = document.createElement("input");
                             input.type = "tel";
                             input.maxLength = 11;
                             input.inputMode = "numeric";
-                            input.value =
-                            value.replace(/\D/g, "");
-
+                            input.value = value.replace(/\D/g, "");
                             input.addEventListener("input", function () {
-
-                                this.value =
-                                this.value.replace(/\D/g, "")
-                                .slice(0,11);
-
+                                this.value = this.value.replace(/\D/g, "").slice(0,11);
                             });
-
                             break;
-
                         case "date":
-
-                            input =
-                            document.createElement("input");
-
+                            input = document.createElement("input");
                             input.type = "date";
-
-                            const date =
-                            new Date(value);
-
+                            const date = new Date(value);
                             if (!isNaN(date)) {
-
-                                input.value =
-                                date.toISOString().split("T")[0];
-
+                                input.value = date.toISOString().split("T")[0];
                             }
-
                             break;
-
                         case "select":
-
-                            input =
-                            document.createElement("select");
-
-                            [
-
-                                "Male",
-                                "Female",
-                                "Rather not to say"
-
-                            ].forEach(option => {
-
-                                const opt =
-                                document.createElement("option");
-
+                            input = document.createElement("select");
+                            ["Male", "Female", "Rather not to say"].forEach(option => {
+                                const opt = document.createElement("option");
                                 opt.value = option;
                                 opt.textContent = option;
-
-                                if (option === value)
-                                    opt.selected = true;
-
+                                if (option === value) opt.selected = true;
                                 input.appendChild(opt);
-
                             });
-
                             break;
-
                     }
-
                     input.className = "edit-input";
-
                     element.innerHTML = "";
-
                     element.appendChild(input);
-
                 });
-
                 cameraBtn.classList.add("active");
-
-                editBtn.innerHTML =
-                '<i class="fas fa-save"></i> Save';
-
+                editBtn.innerHTML = '<i class="fas fa-save"></i> Save';
                 editing = true;
-
                 return;
-
             }
 
             const saveData = {};
-
             for (const field of fields) {
-
-                const element =
-                document.getElementById(field.id);
-
+                const element = document.getElementById(field.id);
                 if (field.type === "readonly") {
-
-                    saveData[field.id] =
-                    element.textContent;
-
+                    saveData[field.id] = element.textContent;
                     continue;
-
                 }
-
-                const input =
-                element.firstElementChild;
-
-                let value =
-                input.value.trim();
-
+                const input = element.firstElementChild;
+                let value = input.value.trim();
                 if (field.type === "text" && value === "") {
-
                     alert("Full name cannot be empty.");
-
                     input.focus();
-
                     return;
-
                 }
-
                 if (field.type === "email") {
-
                     if (!input.checkValidity()) {
-
                         alert("Enter a valid email.");
-
                         input.focus();
-
                         return;
-
                     }
-
                 }
-
                 if (field.type === "number") {
-
                     if (!/^09\d{9}$/.test(value)) {
-
-                        alert(
-                            "Please enter a valid Philippine mobile number."
-                        );
-
+                        alert("Please enter a valid Philippine mobile number.");
                         input.focus();
-
                         return;
-
                     }
-
                 }
-
                 if (field.type === "date" && value !== "") {
-
-                    value =
-                    new Date(value).toLocaleDateString(
-
-                        "en-US",
-
-                        {
-
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric"
-
-                        }
-
-                    );
-
+                    value = new Date(value).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+                    });
                 }
-
                 element.textContent = value;
-
                 saveData[field.id] = value;
-
             }
 
-            localStorage.setItem(
-
-                "profileData",
-
-                JSON.stringify(saveData)
-
-            );
-
-            welcomeName.textContent =
-            document.getElementById("fullName").textContent;
-
-            pictureName.textContent =
-            document.getElementById("fullName").textContent;
-
+            localStorage.setItem("profileData", JSON.stringify(saveData));
+            welcomeName.textContent = document.getElementById("fullName").textContent;
+            pictureName.textContent = document.getElementById("fullName").textContent;
             cameraBtn.classList.remove("active");
-
-            editBtn.innerHTML =
-            '<i class="fas fa-pen"></i> Edit';
-
+            editBtn.innerHTML = '<i class="fas fa-pen"></i> Edit';
             editing = false;
-
         });
-     
+
         /* ===========================
                 ADDRESS BOOK
         =========================== */
@@ -2081,304 +2092,442 @@
         const cancelBtn = document.getElementById("cancelAddress");
 
         const form = document.getElementById("addressForm");
-
         const copyBtn = document.getElementById("copyProfileInfo");
-
         const savedCard = document.getElementById("savedAddressCard");
-
         const editBtnAddress = document.getElementById("editAddressBtn");
         const deleteBtn = document.getElementById("deleteAddressBtn");
 
-        // Variable to track the ID of the address being edited
         let editingAddressId = null;
 
         openBtn.onclick = () => modal.classList.add("active");
-
         closeBtn.onclick = () => modal.classList.remove("active");
-
         cancelBtn.onclick = () => modal.classList.remove("active");
-
         window.onclick = function(e){
-
             if(e.target===modal){
-
                 modal.classList.remove("active");
-
             }
-
         };
 
         copyBtn.onclick = function(){
-
-            let fullname =
-                document.getElementById("fullName").textContent.trim();
-
-            let phone =
-                document.getElementById("phone").textContent.replace(/\D/g,"");
-
+            let fullname = document.getElementById("fullName").textContent.trim();
+            let phone = document.getElementById("phone").textContent.replace(/\D/g,"");
             let names = fullname.split(" ");
-
             document.getElementById("firstName").value = names[0];
-
-            document.getElementById("lastName").value =
-                names.slice(1).join(" ");
-
-            if(phone.startsWith("63"))
-                phone = phone.substring(2);
-
-            if(phone.startsWith("0"))
-                phone = phone.substring(1);
-
+            document.getElementById("lastName").value = names.slice(1).join(" ");
+            if(phone.startsWith("63")) phone = phone.substring(2);
+            if(phone.startsWith("0")) phone = phone.substring(1);
             document.getElementById("phoneNumber").value = phone;
-
         };
 
         document.getElementById("phoneNumber").addEventListener("input",function(){
-
             this.value=this.value.replace(/\D/g,"").slice(0,10);
-
         });
 
         form.addEventListener("submit", function(e){
-
             e.preventDefault();
-
-            let addresses =
-                JSON.parse(localStorage.getItem("addressBook")) || [];
-
+            let addresses = JSON.parse(localStorage.getItem("addressBook")) || [];
             const address = {
-
                 id: editingAddressId ?? Date.now(),
-
                 firstName: document.getElementById("firstName").value,
-
                 lastName: document.getElementById("lastName").value,
-
                 street: document.getElementById("street").value,
-
                 apartment: document.getElementById("apartment").value,
-
                 postal: document.getElementById("postal").value,
-
                 city: document.getElementById("city").value,
-
                 region: document.getElementById("region").value,
-
                 phone: "+63 " + document.getElementById("phoneNumber").value,
-
-                defaultAddress:
-                    document.getElementById("defaultAddress").checked
-
+                defaultAddress: document.getElementById("defaultAddress").checked
             };
-
             if(address.defaultAddress){
-
                 addresses.forEach(a => a.defaultAddress = false);
-
             }
-
             if(editingAddressId){
-
-                const index =
-                    addresses.findIndex(a => a.id === editingAddressId);
-
+                const index = addresses.findIndex(a => a.id === editingAddressId);
                 if(index !== -1){
-
                     addresses[index] = address;
-
                 }
-
             }else{
-
                 addresses.push(address);
-
             }
-
-            localStorage.setItem(
-                "addressBook",
-                JSON.stringify(addresses)
-            );
-
+            localStorage.setItem("addressBook", JSON.stringify(addresses));
             editingAddressId = null;
-
             form.reset();
-
             modal.classList.remove("active");
-
             loadAddresses();
-
         });
 
         function loadAddresses(){
-
-            const addresses =
-                JSON.parse(localStorage.getItem("addressBook")) || [];
-
+            const addresses = JSON.parse(localStorage.getItem("addressBook")) || [];
             savedCard.innerHTML="";
-
             if(addresses.length===0){
-
                 savedCard.style.display="none";
-
                 return;
-
             }
-
             savedCard.style.display="block";
-
             addresses.forEach(address=>{
-
                 savedCard.innerHTML+=`
-
                 <div class="address-item">
-
-                    ${
-                        address.defaultAddress
-                        ?
-                        '<span class="default-badge">Default</span>'
-                        :
-                        ''
-                    }
-
+                    ${address.defaultAddress ? '<span class="default-badge">Default</span>' : ''}
                     <h4>${address.firstName} ${address.lastName}</h4>
-
                     <p>${address.phone}</p>
-
-                    <p>
-
-                        ${address.street}<br>
-
-                        ${address.apartment ? address.apartment+"<br>" : ""}
-
-                        ${address.city}, ${address.region}
-
-                        ${address.postal}
-
-                    </p>
-
+                    <p>${address.street}<br>${address.apartment ? address.apartment+"<br>" : ""}${address.city}, ${address.region} ${address.postal}</p>
                     <div class="address-buttons">
-
-                        <button
-                            onclick="editAddress(${address.id})"
-                            class="edit-btn">
-
-                            <i class="fas fa-edit"></i>
-                            Edit
-
-                        </button>
-
-                        <button
-                            onclick="deleteAddress(${address.id})"
-                            class="edit-btn">
-
-                            <i class="fas fa-trash"></i>
-                            Delete
-
-                        </button>
-
+                        <button onclick="editAddress(${address.id})" class="edit-btn"><i class="fas fa-edit"></i> Edit</button>
+                        <button onclick="deleteAddress(${address.id})" class="edit-btn"><i class="fas fa-trash"></i> Delete</button>
                     </div>
-
-                </div>
-
-                `;
-
+                </div>`;
             });
-
         }
 
         function editAddress(id){
-        let addresses =
-            JSON.parse(localStorage.getItem("addressBook")) || [];
-
-        const address = addresses.find(a => a.id === id);
-
-        if(!address) return;
-
-        editingAddressId = id;
-
-        document.getElementById("firstName").value = address.firstName;
-        document.getElementById("lastName").value = address.lastName;
-        document.getElementById("street").value = address.street;
-        document.getElementById("apartment").value = address.apartment;
-        document.getElementById("postal").value = address.postal;
-        document.getElementById("city").value = address.city;
-        document.getElementById("region").value = address.region;
-
-        document.getElementById("phoneNumber").value =
-            address.phone.replace("+63 ","");
-
-        document.getElementById("defaultAddress").checked =
-            address.defaultAddress;
-
-        modal.classList.add("active");
-
+            let addresses = JSON.parse(localStorage.getItem("addressBook")) || [];
+            const address = addresses.find(a => a.id === id);
+            if(!address) return;
+            editingAddressId = id;
+            document.getElementById("firstName").value = address.firstName;
+            document.getElementById("lastName").value = address.lastName;
+            document.getElementById("street").value = address.street;
+            document.getElementById("apartment").value = address.apartment;
+            document.getElementById("postal").value = address.postal;
+            document.getElementById("city").value = address.city;
+            document.getElementById("region").value = address.region;
+            document.getElementById("phoneNumber").value = address.phone.replace("+63 ","");
+            document.getElementById("defaultAddress").checked = address.defaultAddress;
+            modal.classList.add("active");
         }
 
         deleteBtn.onclick=function(){
-
             if(confirm("Delete this address?")){
-
                 localStorage.removeItem("addressBook");
-
                 savedCard.style.display="none";
-
             }
-
         };
 
         function deleteAddress(id){
-
-        let addresses =
-            JSON.parse(localStorage.getItem("addressBook")) || [];
-
-        addresses =
-            addresses.filter(a=>a.id!==id);
-
-        localStorage.setItem(
-            "addressBook",
-            JSON.stringify(addresses)
-        );
-
-        loadAddresses();
-
+            let addresses = JSON.parse(localStorage.getItem("addressBook")) || [];
+            addresses = addresses.filter(a=>a.id!==id);
+            localStorage.setItem("addressBook", JSON.stringify(addresses));
+            loadAddresses();
         }
 
         loadAddresses();
 
-        // My Purchases Tabs
+        function normalizePurchaseItem(item) {
+            if (!item) return null;
+            return {
+                id: item.id,
+                name: item.name || item.title || 'Item',
+                price: Number(item.price) || 0,
+                qty: Number(item.qty) || 1,
+                icon: item.icon || 'fa-tshirt',
+                img: item.img || '',
+                reviews: item.reviews || 0
+            };
+        }
 
+        function getCartItems() {
+            try {
+                return (JSON.parse(localStorage.getItem('cart')) || []).map(normalizePurchaseItem).filter(Boolean);
+            } catch {
+                return [];
+            }
+        }
+
+        function getWishlistItems() {
+            try {
+                return (JSON.parse(localStorage.getItem('wishlist')) || []).map(normalizePurchaseItem).filter(Boolean);
+            } catch {
+                return [];
+            }
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function renderPurchaseItem(item, options) {
+            const qty = options && options.showQty !== false ? (item.qty > 1 ? `Qty: ${item.qty}` : 'Qty: 1') : '';
+            const total = item.price * item.qty;
+            const imageHtml = item.img
+                ? `<img src="${escapeHtml(item.img)}" alt="${escapeHtml(item.name)}">`
+                : `<i class="fas ${escapeHtml(item.icon || 'fa-tshirt')}"></i>`;
+            const showBuy = options && options.showBuy;
+            const showRemove = options && options.showRemove;
+            const removeCollection = options && options.removeCollection ? options.removeCollection : '';
+            const buyButtonHtml = showBuy ? `<button class="cart-buy-btn" type="button" data-buy="${item.id}">Buy Now</button>` : '';
+            const removeButtonHtml = showRemove ? `<button class="purchase-remove-btn" type="button" data-purchase-remove="${escapeHtml(item.id)}" data-purchase-collection="${escapeHtml(removeCollection)}" aria-label="Remove item"><i class="fas fa-trash"></i></button>` : '';
+            const currentRating = Number(localStorage.getItem(`rating:${item.id}`) || 0);
+            const ratingHtml = options && options.showRating ? `
+                <div class="star-rating" data-rating-for="${escapeHtml(item.id)}">
+                    <span class="rating-label">Rate:</span>
+                    ${[1,2,3,4,5].map(function(star){
+                        return `<button class="star-btn ${currentRating >= star ? 'active' : ''}" type="button" data-star="${star}" data-rating-for="${escapeHtml(item.id)}" aria-label="${star} star rating"><i class="${currentRating >= star ? 'fas' : 'far'} fa-star"></i></button>`;
+                    }).join('')}
+                </div>
+            ` : '';
+            const actionsHtml = (buyButtonHtml || removeButtonHtml) ? `<div class="purchase-item-actions">${buyButtonHtml}${removeButtonHtml}</div>` : '';
+            return `
+                <div class="purchase-item" data-purchase-item="${escapeHtml(item.id)}">
+                    <div class="thumb">${imageHtml}</div>
+                    <div class="details">
+                        <h5>${escapeHtml(item.name)}</h5>
+                        <p>${qty || 'Saved item'}</p>
+                        <div class="meta-row">
+                            <span class="amount">${new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(total || item.price)}</span>
+                            <span>${item.reviews ? `${item.reviews} reviews` : 'Jag Jeans'}</span>
+                        </div>
+                        ${actionsHtml}
+                        ${ratingHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPurchaseList(el, items, emptyMessage, options) {
+            if (!el) return;
+            if (!items.length) {
+                el.innerHTML = `<div class="purchase-empty-state"><i class="fas fa-box-open"></i><span>${escapeHtml(emptyMessage)}</span></div>`;
+                return;
+            }
+            el.innerHTML = items.map(function(item) { return renderPurchaseItem(item, options); }).join('');
+        }
+
+        const orderPreviewItems = {
+            pay: [
+                { id: 'pay-1', name: "Jag Men's Tapered Jeans in Blue Rebel", price: 1499, qty: 1, img: 'images/product2.jfif', icon: 'fa-jeans', status: 'Awaiting Payment', actionLabel: 'Pay Now', actionClass: 'btn btn-primary', actionData: 'pay-now' }
+            ],
+            ship: [
+                { id: 'ship-1', name: 'Jag Ivana Jeans', price: 1299, qty: 1, img: 'images/product10.jfif', icon: 'fa-truck', status: 'Preparing Shipment', actionLabel: 'Track Order', actionClass: 'btn btn-secondary', actionData: 'track-order' }
+            ],
+            receive: [
+                { id: 'receive-1', name: 'Jag Ladies Denim Black Trousers', price: 1599, qty: 1, img: 'images/product13.jfif', icon: 'fa-box-open', status: 'Out for Delivery', actionLabel: 'Confirm Receipt', actionClass: 'btn btn-primary', actionData: 'confirm-receipt' }
+            ],
+            rate: [
+                { id: 'rate-1', name: 'Oversized T-Shirt', price: 799, qty: 1, img: 'images/product5.jfif', icon: 'fa-star', status: 'Delivered', actionLabel: '', actionClass: '', actionData: '' }
+            ]
+        };
+
+        function renderPurchaseDashboard() {
+            const cartItems = getCartItems();
+            const wishlistItems = getWishlistItems();
+            const cartCount = cartItems.reduce(function(sum, item) { return sum + item.qty; }, 0);
+            const wishlistCount = wishlistItems.length;
+            const allCount = cartCount + wishlistCount;
+
+            const allCountEl = document.getElementById('allCount');
+            const cartBadgeEl = document.getElementById('cartCountBadge');
+            const wishlistBadgeEl = document.getElementById('wishlistCountBadge');
+
+            if (allCountEl) allCountEl.textContent = allCount;
+            if (cartBadgeEl) cartBadgeEl.textContent = cartCount;
+            if (wishlistBadgeEl) wishlistBadgeEl.textContent = wishlistCount;
+
+            const headerCartCount = document.getElementById('cartCount');
+            if (headerCartCount) headerCartCount.textContent = cartCount;
+
+            const allCartMeta = document.getElementById('allCartMeta');
+            const allWishlistMeta = document.getElementById('allWishlistMeta');
+            const cartOrdersMeta = document.getElementById('cartOrdersMeta');
+            const wishlistOrdersMeta = document.getElementById('wishlistOrdersMeta');
+
+            if (allCartMeta) allCartMeta.textContent = cartCount + (cartCount === 1 ? ' item saved in your cart.' : ' items saved in your cart.');
+            if (allWishlistMeta) allWishlistMeta.textContent = wishlistCount + (wishlistCount === 1 ? ' item saved to wishlist.' : ' items saved to wishlist.');
+            if (cartOrdersMeta) cartOrdersMeta.textContent = cartCount + (cartCount === 1 ? ' item saved in your cart.' : ' items saved in your cart.');
+            if (wishlistOrdersMeta) wishlistOrdersMeta.textContent = wishlistCount + (wishlistCount === 1 ? ' item saved to wishlist.' : ' items saved to wishlist.');
+
+            renderPurchaseList(document.getElementById('allCartList'), cartItems, 'No cart items yet. Add a product from Shop to see it here.', { showQty: true, showBuy: true, showRemove: true, removeCollection: 'cart' });
+            renderPurchaseList(document.getElementById('allWishlistList'), wishlistItems, 'No wishlist items yet. Tap the heart in Shop to save favorites.', { showQty: false, showRemove: true, removeCollection: 'wishlist' });
+            renderPurchaseList(document.getElementById('cartPurchaseList'), cartItems, 'No cart items yet. Add a product from Shop to see it here.', { showQty: true, showBuy: true, showRemove: true, removeCollection: 'cart' });
+            renderPurchaseList(document.getElementById('wishlistPurchaseList'), wishlistItems, 'No wishlist items yet. Tap the heart in Shop to save favorites.', { showQty: false, showRemove: true, removeCollection: 'wishlist' });
+
+            const orderConfigs = [
+                { key: 'pay', listId: 'payList', empty: 'No orders to pay right now.', buttonClass: 'btn btn-primary', actionLabel: 'Pay Now', showQty: true, showTotal: false, statusClass: 'processing', showAction: true },
+                { key: 'ship', listId: 'shipList', empty: 'No orders waiting to ship.', buttonClass: 'btn btn-secondary', actionLabel: 'Track Order', showQty: false, showTotal: false, statusClass: 'shipped', showAction: true },
+                { key: 'receive', listId: 'receiveList', empty: 'No orders ready to receive.', buttonClass: 'btn btn-primary', actionLabel: 'Confirm Receipt', showQty: false, showTotal: false, statusClass: 'delivered', showAction: true },
+                { key: 'rate', listId: 'rateList', empty: 'No orders ready for rating yet.', buttonClass: 'btn btn-primary', actionLabel: 'Rate Product', showQty: false, showTotal: false, statusClass: 'delivered', showAction: true, showRating: true }
+            ];
+
+            orderConfigs.forEach(function(config) {
+                const target = document.getElementById(config.listId);
+                const items = orderPreviewItems[config.key] || [];
+                if (!target) return;
+                if (!items.length) {
+                    target.innerHTML = '<div class="purchase-empty-state"><i class="fas fa-box-open"></i><span>' + escapeHtml(config.empty) + '</span></div>';
+                    return;
+                }
+                target.innerHTML = items.map(function(item) {
+                    const imageHtml = item.img ? '<img src="' + escapeHtml(item.img) + '" alt="' + escapeHtml(item.name) + '">' : '<i class="fas ' + escapeHtml(item.icon || 'fa-tshirt') + '"></i>';
+                    const qtyText = config.showQty ? ('Qty: ' + item.qty) : item.status;
+                    const total = item.price * item.qty;
+                    const amountText = config.showTotal ? new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(total || item.price) : (new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(total || item.price) + ' total');
+                    const action = config.showAction === false ? '' : '<button class="' + config.buttonClass + '" type="button" data-order-action="' + config.key + '" data-id="' + item.id + '">' + escapeHtml(config.actionLabel) + '</button>';
+                    const rating = config.showRating ? (`
+                        <div class="star-rating" data-rating-for="${escapeHtml(item.id)}">
+                            <span class="rating-label">Rate:</span>
+                            ${[1,2,3,4,5].map(function(star) {
+                                const saved = Number(localStorage.getItem('rating:' + item.id) || 0);
+                                return `<button class="star-btn ${saved >= star ? 'active' : ''}" type="button" data-star="${star}" data-rating-for="${escapeHtml(item.id)}" aria-label="${star} star rating"><i class="${saved >= star ? 'fas' : 'far'} fa-star"></i></button>`;
+                            }).join('')}
+                        </div>
+                    `) : '';
+                    return `
+                        <div class="purchase-item purchase-order-item" data-purchase-item="${escapeHtml(item.id)}">
+                            <div class="thumb">${imageHtml}</div>
+                            <div class="details">
+                                <h5>${escapeHtml(item.name)}</h5>
+                                <p>${escapeHtml(qtyText)}</p>
+                                <div class="meta-row">
+                                    <span class="amount">${amountText}</span>
+                                    <span><span class="status ${escapeHtml(config.statusClass)}">${escapeHtml(item.status)}</span></span>
+                                </div>
+                                ${action ? `<div class="purchase-item-actions purchase-order-actions">${action}</div>` : ''}
+                                ${rating}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            });
+        }
+
+        // My Purchases Tabs
         const purchaseTabs = document.querySelectorAll(".purchase-tab");
         const orderSections = document.querySelectorAll(".order-section");
-
-        // Default: All tab is active
         document.querySelector('[data-tab="all"]').classList.add("active");
         document.getElementById("allOrders").style.display = "block";
 
         purchaseTabs.forEach(tab => {
-
             tab.addEventListener("click", function () {
-
-                // Remove active state
                 purchaseTabs.forEach(btn => btn.classList.remove("active"));
-
-                // Hide all sections
                 orderSections.forEach(section => section.style.display = "none");
-
-                // Activate selected tab
                 this.classList.add("active");
-
-                // Show corresponding section
                 const target = document.getElementById(this.dataset.tab + "Orders");
-
                 if (target) {
                     target.style.display = "block";
                 }
-
             });
-
         });
 
-        
+        renderPurchaseDashboard();
+
+        function activatePurchaseTab(tabName) {
+            const tab = document.querySelector('[data-tab="' + tabName + '"]');
+            if (tab) tab.click();
+        }
+
+        const buyCartBtn = document.getElementById('buyCartBtn');
+        if (buyCartBtn) {
+            buyCartBtn.addEventListener('click', function() {
+                activatePurchaseTab('pay');
+                const target = document.getElementById('payOrders');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                showToast('Opened payment options');
+            });
+        }
+
+        document.addEventListener('click', function(e) {
+            const buyBtn = e.target.closest('[data-buy]');
+            if (buyBtn) {
+                activatePurchaseTab('pay');
+                const target = document.getElementById('payOrders');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                showToast('Ready to buy from Cart');
+                return;
+            }
+
+            const purchaseRemoveBtn = e.target.closest('[data-purchase-remove]');
+            if (purchaseRemoveBtn) {
+                const itemId = purchaseRemoveBtn.getAttribute('data-purchase-remove');
+                const collection = purchaseRemoveBtn.getAttribute('data-purchase-collection');
+                if (itemId && collection) {
+                    removePurchaseItem(collection, itemId);
+                    showToast('Item removed');
+                }
+                return;
+            }
+
+            const starBtn = e.target.closest('[data-star]');
+            if (starBtn) {
+                const rating = parseInt(starBtn.getAttribute('data-star'), 10);
+                const itemId = starBtn.getAttribute('data-rating-for');
+                if (itemId && rating) {
+                    localStorage.setItem('rating:' + itemId, String(rating));
+                    renderPurchaseDashboard();
+                    showToast(rating + ' star' + (rating > 1 ? 's' : '') + ' saved');
+                }
+                return;
+            }
+
+            const orderBtn = e.target.closest('[data-order-action]');
+            if (!orderBtn) return;
+            const action = orderBtn.dataset.orderAction;
+            const messages = {
+                pay: 'Opening payment for your order',
+                ship: 'Tracking details opened',
+                receive: 'Receipt confirmed',
+                rate: 'Rating form opened'
+            };
+            showToast(messages[action] || 'Action completed');
+        });
+
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'cart' || e.key === 'wishlist') {
+                renderCart();
+                renderPurchaseDashboard();
+            }
+        });
+
+        // --- Header / menu toggle (already handled in shared cart IIFE, but we add the rest) ---
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', function() {
+                const isOpen = navLinks.classList.toggle('open');
+                this.setAttribute('aria-expanded', isOpen);
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+            });
+            navLinks.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                });
+            });
+        }
+
+        const header = document.getElementById('siteHeader');
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            header.classList.toggle('scrolled', currentScroll > 20);
+        }, { passive: true });
+
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
