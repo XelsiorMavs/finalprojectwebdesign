@@ -11,12 +11,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /*
-            To change product names, prices, badges, or swap in real photos,
-            scroll down to the <script> tag near the bottom of this file and
-            edit the PRODUCTS list — everything is commented there.
-        */
-
         /* reset & base */
         *,
         *::before,
@@ -1678,24 +1672,24 @@
             'use strict';
 
             const PRODUCTS = [
-                { id: 1, name: "Jag Men's Basic Stripes Tee", category: 'men', fit: 'straight', wash: 'light', price: 699, originalPrice: null, rating: 4.4, reviews: 58, isNew: false, onSale: false, img: 'product1.jfif', icon: 'fa-tshirt' },
-                { id: 2, name: "Jag Men's Tapered Jeans in Blue Rebel", category: 'men', fit: 'slim', wash: 'light', price: 1799, originalPrice: null, rating: 4.7, reviews: 92, isNew: true, onSale: false, img: 'product2.jfif', icon: 'fa-tshirt' },
-                { id: 3, name: "Jag Men's Tapered Jeans in Dark Blast", category: 'men', fit: 'slim', wash: 'dark', price: 1799, originalPrice: null, rating: 4.6, reviews: 74, isNew: false, onSale: false, img: 'product3.jfif', icon: 'fa-tshirt' },
-                { id: 4, name: "Jag Men's Colored Pants Skinny Fit", category: 'men', fit: 'skinny', wash: 'black', price: 1299, originalPrice: null, rating: 4.3, reviews: 41, isNew: false, onSale: false, img: 'product4.jfif', icon: 'fa-tshirt' },
-                { id: 5, name: "Jag Men's Low & Lean Jeans in Thunderstorm", category: 'men', fit: 'slim', wash: 'raw', price: 1799, originalPrice: null, rating: 4.8, reviews: 36, isNew: true, onSale: false, img: 'product5.jfif', icon: 'fa-tshirt' },
-                { id: 6, name: "Jag Men's Tapered Jeans", category: 'men', fit: 'straight', wash: 'stone', price: 1799, originalPrice: null, rating: 4.5, reviews: 63, isNew: false, onSale: false, img: 'product6.jfif', icon: 'fa-tshirt' },
-                { id: 7, name: "Jag Men's Round Neck Rugged Boxy", category: 'men', fit: 'relaxed', wash: 'black', price: 699, originalPrice: null, rating: 4.2, reviews: 49, isNew: false, onSale: false, img: 'product7.jfif', icon: 'fa-tshirt' },
-                { id: 8, name: "Jag Men's Straight Cut Jeans in Charcoal Blue", category: 'men', fit: 'straight', wash: 'dark', price: 1499, originalPrice: 1699, rating: 4.6, reviews: 55, isNew: false, onSale: true, img: 'product8.jfif', icon: 'fa-tshirt' },
-                { id: 9, name: "JAG Men's Wide Straight Denim Jeans", category: 'men', fit: 'straight', wash: 'raw', price: 1699, originalPrice: null, rating: 4.4, reviews: 27, isNew: false, onSale: false, img: 'product9.jfif', icon: 'fa-tshirt' },
-                { id: 10, name: 'Jag Ivana Jeans', category: 'women', fit: 'skinny', wash: 'dark', price: 1499, originalPrice: null, rating: 4.8, reviews: 88, isNew: true, onSale: false, img: 'product10.jfif', icon: 'fa-person-dress' },
-                { id: 11, name: 'Jag Ladies High Waist Straight Cut Jeans', category: 'women', fit: 'straight', wash: 'light', price: 1499, originalPrice: null, rating: 4.5, reviews: 67, isNew: false, onSale: false, img: 'product11.jfif', icon: 'fa-person-dress' },
-                { id: 12, name: 'Jag Ladies Ultra High Waist Skinny Jeans in Faded Blue Denim', category: 'women', fit: 'skinny', wash: 'light', price: 1499, originalPrice: 1699, rating: 4.6, reviews: 101, isNew: false, onSale: true, img: 'product12.jfif', icon: 'fa-person-dress' },
-                { id: 13, name: 'Jag Ladies Denim Black Trousers', category: 'women', fit: 'straight', wash: 'black', price: 1299, originalPrice: null, rating: 4.3, reviews: 34, isNew: false, onSale: false, img: 'product13.jfif', icon: 'fa-person-dress' },
-                { id: 14, name: 'Jag Ladies Denim Pants Flare 26"', category: 'women', fit: 'relaxed', wash: 'dark', price: 1599, originalPrice: null, rating: 4.7, reviews: 45, isNew: true, onSale: false, img: 'product14.jfif', icon: 'fa-person-dress' },
-                { id: 15, name: 'Jag Ladies Woven Trousers', category: 'women', fit: 'relaxed', wash: 'stone', price: 1199, originalPrice: null, rating: 4.2, reviews: 29, isNew: false, onSale: false, img: 'product15.jfif', icon: 'fa-person-dress' },
-                { id: 16, name: 'Jag Ladies Cargo Stylish Colored Trousers with Multi-Pockets', category: 'women', fit: 'relaxed', wash: 'raw', price: 1599, originalPrice: null, rating: 4.4, reviews: 22, isNew: false, onSale: false, img: 'product16.jfif', icon: 'fa-person-dress' },
-                { id: 17, name: 'Jag Ladies High Waist Straight Cut Pants 25"', category: 'women', fit: 'straight', wash: 'dark', price: 1699, originalPrice: null, rating: 4.5, reviews: 31, isNew: false, onSale: false, img: 'product17.jfif', icon: 'fa-person-dress' },
-                { id: 18, name: 'Jag Ladies Flare Jeans 28" Blue Glaze', category: 'women', fit: 'relaxed', wash: 'light', price: 1699, originalPrice: 1899, rating: 4.6, reviews: 40, isNew: false, onSale: true, img: 'product18.jfif', icon: 'fa-person-dress' }
+                { id: 1, name: "Jag Men's Basic Stripes Tee", category: 'men', fit: 'straight', wash: 'light', price: 699, originalPrice: null, rating: 4.4, reviews: 58, isNew: false, onSale: false, img: 'images/product1.jfif', icon: 'fa-tshirt' },
+                { id: 2, name: "Jag Men's Tapered Jeans in Blue Rebel", category: 'men', fit: 'slim', wash: 'light', price: 1799, originalPrice: null, rating: 4.7, reviews: 92, isNew: true, onSale: false, img: 'images/product2.jfif', icon: 'fa-tshirt' },
+                { id: 3, name: "Jag Men's Tapered Jeans in Dark Blast", category: 'men', fit: 'slim', wash: 'dark', price: 1799, originalPrice: null, rating: 4.6, reviews: 74, isNew: false, onSale: false, img: 'images/product3.jfif', icon: 'fa-tshirt' },
+                { id: 4, name: "Jag Men's Colored Pants Skinny Fit", category: 'men', fit: 'skinny', wash: 'black', price: 1299, originalPrice: null, rating: 4.3, reviews: 41, isNew: false, onSale: false, img: 'images/product4.jfif', icon: 'fa-tshirt' },
+                { id: 5, name: "Jag Men's Low & Lean Jeans in Thunderstorm", category: 'men', fit: 'slim', wash: 'raw', price: 1799, originalPrice: null, rating: 4.8, reviews: 36, isNew: true, onSale: false, img: 'images/product5.jfif', icon: 'fa-tshirt' },
+                { id: 6, name: "Jag Men's Tapered Jeans", category: 'men', fit: 'straight', wash: 'stone', price: 1799, originalPrice: null, rating: 4.5, reviews: 63, isNew: false, onSale: false, img: 'images/product6.jfif', icon: 'fa-tshirt' },
+                { id: 7, name: "Jag Men's Round Neck Rugged Boxy", category: 'men', fit: 'relaxed', wash: 'black', price: 699, originalPrice: null, rating: 4.2, reviews: 49, isNew: false, onSale: false, img: 'images/product7.jfif', icon: 'fa-tshirt' },
+                { id: 8, name: "Jag Men's Straight Cut Jeans in Charcoal Blue", category: 'men', fit: 'straight', wash: 'dark', price: 1499, originalPrice: 1699, rating: 4.6, reviews: 55, isNew: false, onSale: true, img: 'images/product8.jfif', icon: 'fa-tshirt' },
+                { id: 9, name: "JAG Men's Wide Straight Denim Jeans", category: 'men', fit: 'straight', wash: 'raw', price: 1699, originalPrice: null, rating: 4.4, reviews: 27, isNew: false, onSale: false, img: 'images/product9.jfif', icon: 'fa-tshirt' },
+                { id: 10, name: 'Jag Ivana Jeans', category: 'women', fit: 'skinny', wash: 'dark', price: 1499, originalPrice: null, rating: 4.8, reviews: 88, isNew: true, onSale: false, img: 'images/product10.jfif', icon: 'fa-person-dress' },
+                { id: 11, name: 'Jag Ladies High Waist Straight Cut Jeans', category: 'women', fit: 'straight', wash: 'light', price: 1499, originalPrice: null, rating: 4.5, reviews: 67, isNew: false, onSale: false, img: 'images/product11.jfif', icon: 'fa-person-dress' },
+                { id: 12, name: 'Jag Ladies Ultra High Waist Skinny Jeans in Faded Blue Denim', category: 'women', fit: 'skinny', wash: 'light', price: 1499, originalPrice: 1699, rating: 4.6, reviews: 101, isNew: false, onSale: true, img: 'images/product12.jfif', icon: 'fa-person-dress' },
+                { id: 13, name: 'Jag Ladies Denim Black Trousers', category: 'women', fit: 'straight', wash: 'black', price: 1299, originalPrice: null, rating: 4.3, reviews: 34, isNew: false, onSale: false, img: 'images/product13.jfif', icon: 'fa-person-dress' },
+                { id: 14, name: 'Jag Ladies Denim Pants Flare 26"', category: 'women', fit: 'relaxed', wash: 'dark', price: 1599, originalPrice: null, rating: 4.7, reviews: 45, isNew: true, onSale: false, img: 'images/product14.jfif', icon: 'fa-person-dress' },
+                { id: 15, name: 'Jag Ladies Woven Trousers', category: 'women', fit: 'relaxed', wash: 'stone', price: 1199, originalPrice: null, rating: 4.2, reviews: 29, isNew: false, onSale: false, img: 'images/product15.jfif', icon: 'fa-person-dress' },
+                { id: 16, name: 'Jag Ladies Cargo Stylish Colored Trousers with Multi-Pockets', category: 'women', fit: 'relaxed', wash: 'raw', price: 1599, originalPrice: null, rating: 4.4, reviews: 22, isNew: false, onSale: false, img: 'images/product16.jfif', icon: 'fa-person-dress' },
+                { id: 17, name: 'Jag Ladies High Waist Straight Cut Pants 25"', category: 'women', fit: 'straight', wash: 'dark', price: 1699, originalPrice: null, rating: 4.5, reviews: 31, isNew: false, onSale: false, img: 'images/product17.jfif', icon: 'fa-person-dress' },
+                { id: 18, name: 'Jag Ladies Flare Jeans 28" Blue Glaze', category: 'women', fit: 'relaxed', wash: 'light', price: 1699, originalPrice: 1899, rating: 4.6, reviews: 40, isNew: false, onSale: true, img: 'images/product18.jfif', icon: 'fa-person-dress' }
             ];
 
             const PAGE_SIZE = 9;
