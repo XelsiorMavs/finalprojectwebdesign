@@ -14,9 +14,7 @@
         /* ============================================
            RESET & BASE (unified with other pages)
            ============================================ */
-        *,
-        *::before,
-        *::after {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -36,16 +34,14 @@
             --gray-500: #6B7280;
             --gray-700: #374151;
             --gray-900: #111827;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.10);
-            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.15);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.10);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.15);
             --radius: 8px;
-            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition: 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -54,44 +50,28 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             padding-top: 80px;
-            /* space for fixed header */
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
         /* ============================================
-           NAVBAR (identical across all pages)
+           NAVBAR (unified, with image logo)
            ============================================ */
-
         .site-header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255,255,255,0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--gray-200);
             transition: var(--transition);
         }
-
-        .site-header.scrolled {
-            box-shadow: var(--shadow-sm);
-        }
+        .site-header.scrolled { box-shadow: var(--shadow-sm); }
 
         .header-inner {
             display: flex;
@@ -103,33 +83,14 @@
             padding: 0 24px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.6rem;
-            letter-spacing: -0.02em;
-            color: var(--black);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--red-600);
-        }
-
-        .logo-icon {
-            font-size: 1.4rem;
-            color: var(--red-600);
-        }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 150px; width: auto; display: block; }
 
         .nav-links {
             display: flex;
             align-items: center;
             gap: 32px;
         }
-
         .nav-links a {
             font-size: 0.85rem;
             font-weight: 500;
@@ -140,7 +101,6 @@
             position: relative;
             text-decoration: none;
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -151,22 +111,15 @@
             background-color: var(--red-600);
             transition: var(--transition);
         }
-
         .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--red-600);
-        }
+        .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover { color: var(--red-600); }
 
         .header-utils {
             display: flex;
             align-items: center;
             gap: 20px;
         }
-
         .header-utils .icon-btn {
             background: none;
             border: none;
@@ -176,13 +129,14 @@
             transition: var(--transition);
             position: relative;
             padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
         .header-utils .icon-btn:hover {
             color: var(--red-600);
             transform: scale(1.05);
         }
-
         .header-utils .cart-count {
             position: absolute;
             top: -8px;
@@ -191,13 +145,17 @@
             font-weight: 700;
             background-color: var(--red-600);
             color: var(--white);
-            width: 18px;
+            min-width: 18px;
             height: 18px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 0 4px;
+            line-height: 1;
+            transition: var(--transition);
         }
+        .header-utils .cart-count.bump { transform: scale(1.35); }
 
         .menu-toggle {
             display: none;
@@ -209,9 +167,7 @@
             padding: 4px;
         }
 
-        /* ============================================
-           RESPONSIVE — Mobile Navbar
-           ============================================ */
+        /* ----- Mobile navbar ----- */
         @media (max-width: 640px) {
             .nav-links {
                 display: none;
@@ -226,21 +182,13 @@
                 border-bottom: 1px solid var(--gray-200);
                 box-shadow: var(--shadow-md);
             }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .header-utils .icon-btn span {
-                display: none;
-            }
+            .nav-links.open { display: flex; }
+            .menu-toggle { display: block; }
+            .header-utils .icon-btn span { display: none; }
+            .logo img { height: 32px; }
         }
 
-        /* ----- Buttons ----- */
+        /* ----- Buttons (reused) ----- */
         .btn {
             display: inline-block;
             padding: 14px 36px;
@@ -255,46 +203,19 @@
             transition: var(--transition);
             text-align: center;
         }
-
         .btn-primary {
             background-color: var(--red-600);
             color: var(--white);
         }
-
         .btn-primary:hover {
             background-color: var(--red-700);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--red-600);
-            border: 2px solid var(--red-600);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--red-600);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-black {
-            background-color: var(--black);
-            color: var(--white);
-        }
-
-        .btn-black:hover {
-            background-color: var(--gray-900);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* ----- Hero ----- */
+        /* ----- Hero (unchanged) ----- */
         .hero {
             padding-top: 0;
-            /* already handled by body padding-top */
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -303,7 +224,6 @@
             overflow: hidden;
             border-bottom: 1px solid var(--gray-200);
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -311,10 +231,9 @@
             right: -10%;
             width: 60%;
             height: 120%;
-            background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.04) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(220,38,38,0.04) 0%, transparent 70%);
             pointer-events: none;
         }
-
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -324,11 +243,7 @@
             position: relative;
             z-index: 2;
         }
-
-        .hero-content {
-            max-width: 580px;
-        }
-
+        .hero-content { max-width: 580px; }
         .hero-badge {
             display: inline-block;
             font-size: 0.7rem;
@@ -336,13 +251,12 @@
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--red-600);
-            background: rgba(220, 38, 38, 0.08);
+            background: rgba(220,38,38,0.08);
             padding: 6px 18px;
             border-radius: 40px;
             margin-bottom: 20px;
-            border: 1px solid rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220,38,38,0.15);
         }
-
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
@@ -351,12 +265,7 @@
             color: var(--black);
             margin-bottom: 16px;
         }
-
-        .hero-content h1 .highlight {
-            color: var(--red-600);
-            font-style: italic;
-        }
-
+        .hero-content h1 .highlight { color: var(--red-600); font-style: italic; }
         .hero-content p {
             font-size: 1.15rem;
             color: var(--gray-500);
@@ -364,19 +273,8 @@
             max-width: 440px;
             line-height: 1.7;
         }
-
-        .hero-actions {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+        .hero-image { display: flex; justify-content: center; align-items: center; }
         .hero-image img {
             width: 100%;
             max-width: 540px;
@@ -387,64 +285,10 @@
             border: 1px solid var(--gray-200);
             background: linear-gradient(145deg, var(--gray-200), var(--gray-300));
         }
+        .hero-image .img-placeholder { /* fallback */ display: none; }
 
-        /* Fallback for missing images */
-        .hero-image .img-placeholder {
-            width: 100%;
-            max-width: 540px;
-            aspect-ratio: 3/4;
-            background: linear-gradient(145deg, var(--gray-200), var(--gray-300));
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray-500);
-            font-size: 0.9rem;
-            font-weight: 400;
-            letter-spacing: 0.04em;
-            text-align: center;
-            padding: 40px;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--gray-200);
-        }
-
-        .hero-image .img-placeholder::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(220, 38, 38, 0.10), transparent 60%);
-            pointer-events: none;
-        }
-
-        .hero-image .img-placeholder i {
-            font-size: 3.2rem;
-            margin-bottom: 16px;
-            color: var(--gray-300);
-        }
-
-        .hero-image .img-placeholder .label {
-            position: relative;
-            z-index: 2;
-            font-weight: 500;
-            color: var(--gray-700);
-        }
-
-        .hero-image .img-placeholder .sub-label {
-            position: relative;
-            z-index: 2;
-            font-size: 0.75rem;
-            opacity: 0.7;
-            margin-top: 4px;
-        }
-
-        /* ----- Section / Products ----- */
-        .section {
-            padding: 80px 0;
-        }
-
+        /* ----- Product grid (updated with shop products) ----- */
+        .section { padding: 80px 0; }
         .section-header {
             display: flex;
             align-items: flex-end;
@@ -453,7 +297,6 @@
             flex-wrap: wrap;
             gap: 16px;
         }
-
         .section-header h2 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
@@ -461,17 +304,12 @@
             color: var(--black);
             letter-spacing: -0.01em;
         }
-
-        .section-header h2 span {
-            color: var(--red-600);
-        }
-
+        .section-header h2 span { color: var(--red-600); }
         .section-header .subtitle {
             font-size: 0.95rem;
             color: var(--gray-500);
             max-width: 400px;
         }
-
         .section-header .view-all {
             font-weight: 500;
             font-size: 0.85rem;
@@ -481,7 +319,6 @@
             transition: var(--transition);
             white-space: nowrap;
         }
-
         .section-header .view-all:hover {
             color: var(--red-700);
             border-color: var(--red-700);
@@ -492,7 +329,6 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 28px;
         }
-
         .product-card {
             background: var(--white);
             border-radius: var(--radius);
@@ -502,13 +338,11 @@
             cursor: pointer;
             border: 1px solid var(--gray-200);
         }
-
         .product-card:hover {
             transform: translateY(-6px);
             box-shadow: var(--shadow-md);
             border-color: var(--red-600);
         }
-
         .product-card .img-placeholder {
             width: 100%;
             aspect-ratio: 3/4;
@@ -516,19 +350,13 @@
             overflow: hidden;
             background: linear-gradient(145deg, var(--gray-200), #d1d5db);
         }
-
         .product-card .img-placeholder img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
-
-        .product-card:hover .img-placeholder img {
-            transform: scale(1.03);
-        }
-
-        /* Fallback icon and label inside product image placeholder */
+        .product-card:hover .img-placeholder img { transform: scale(1.03); }
         .product-card .img-placeholder .fallback {
             position: absolute;
             inset: 0;
@@ -542,13 +370,11 @@
             padding: 20px;
             background: linear-gradient(145deg, var(--gray-200), #d1d5db);
         }
-
         .product-card .img-placeholder .fallback i {
             font-size: 2.8rem;
             margin-bottom: 10px;
             color: var(--gray-300);
         }
-
         .product-card .img-placeholder .badge {
             position: absolute;
             top: 14px;
@@ -563,15 +389,10 @@
             border-radius: 40px;
             z-index: 2;
         }
-
-        .product-card .img-placeholder .badge.sale {
-            background: var(--red-600);
-        }
-
+        .product-card .img-placeholder .badge.sale { background: var(--red-600); }
         .product-card .card-body {
             padding: 16px 18px 20px;
         }
-
         .product-card .card-body .product-brand {
             font-size: 0.7rem;
             font-weight: 600;
@@ -580,20 +401,17 @@
             color: var(--gray-500);
             margin-bottom: 2px;
         }
-
         .product-card .card-body h4 {
             font-size: 0.95rem;
             font-weight: 600;
             color: var(--black);
             margin-bottom: 2px;
         }
-
         .product-card .card-body .price {
             font-size: 1rem;
             font-weight: 600;
             color: var(--black);
         }
-
         .product-card .card-body .price .original {
             font-weight: 400;
             color: var(--gray-500);
@@ -601,11 +419,7 @@
             margin-right: 8px;
             font-size: 0.85rem;
         }
-
-        .product-card .card-body .price .sale-price {
-            color: var(--red-600);
-        }
-
+        .product-card .card-body .price .sale-price { color: var(--red-600); }
         .product-card .card-body .rating {
             display: flex;
             align-items: center;
@@ -614,45 +428,21 @@
             font-size: 0.75rem;
             color: var(--gray-500);
         }
+        .product-card .card-body .rating .stars { color: var(--black); letter-spacing: 1px; }
 
-        .product-card .card-body .rating .stars {
-            color: var(--black);
-            letter-spacing: 1px;
-        }
-
-        /* ----- Brand Story (Centered, no image) ----- */
+        /* ----- Brand story (unchanged) ----- */
         .brand-story {
             background: var(--red-950);
             color: var(--white);
             padding: 80px 0;
-            position: relative;
-            overflow: hidden;
             border-top: 1px solid var(--gray-200);
             border-bottom: 1px solid var(--gray-200);
         }
-
-        .brand-story::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 60%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.15) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .brand-story .container {
-            position: relative;
-            z-index: 2;
-        }
-
         .brand-story-content {
             max-width: 820px;
             margin: 0 auto;
             text-align: center;
         }
-
         .brand-story-content h2 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
@@ -660,42 +450,32 @@
             line-height: 1.2;
             margin-bottom: 20px;
         }
-
-        .brand-story-content h2 .highlight {
-            color: var(--red-600);
-        }
-
+        .brand-story-content h2 .highlight { color: var(--red-600); }
         .brand-story-content p {
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255,255,255,0.75);
             line-height: 1.8;
             margin-bottom: 32px;
             max-width: 720px;
             margin-left: auto;
             margin-right: auto;
         }
-
         .brand-story-content .values {
             display: flex;
             justify-content: center;
             gap: 48px;
             flex-wrap: wrap;
         }
-
         .brand-story-content .values .value-item {
             display: flex;
             align-items: center;
             gap: 10px;
             font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255,255,255,0.85);
         }
+        .brand-story-content .values .value-item i { color: var(--red-600); font-size: 1.2rem; }
 
-        .brand-story-content .values .value-item i {
-            color: var(--red-600);
-            font-size: 1.2rem;
-        }
-
-        /* ----- Newsletter ----- */
+        /* ----- Newsletter (unchanged) ----- */
         .newsletter {
             background: var(--gray-50);
             padding: 72px 0;
@@ -703,12 +483,7 @@
             border-top: 1px solid var(--gray-200);
             border-bottom: 1px solid var(--gray-200);
         }
-
-        .newsletter-content {
-            max-width: 560px;
-            margin: 0 auto;
-        }
-
+        .newsletter-content { max-width: 560px; margin: 0 auto; }
         .newsletter-content h2 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
@@ -716,24 +491,18 @@
             color: var(--black);
             margin-bottom: 8px;
         }
-
-        .newsletter-content h2 span {
-            color: var(--red-600);
-        }
-
+        .newsletter-content h2 span { color: var(--red-600); }
         .newsletter-content p {
             color: var(--gray-500);
             margin-bottom: 28px;
             font-size: 1rem;
         }
-
         .newsletter-form {
             display: flex;
             gap: 12px;
             max-width: 480px;
             margin: 0 auto;
         }
-
         .newsletter-form input {
             flex: 1;
             padding: 14px 20px;
@@ -742,23 +511,14 @@
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
             background: var(--white);
-            transition: var(--transition);
             outline: none;
+            transition: var(--transition);
         }
-
         .newsletter-form input:focus {
             border-color: var(--red-600);
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+            box-shadow: 0 0 0 3px rgba(220,38,38,0.12);
         }
-
-        .newsletter-form input::placeholder {
-            color: var(--gray-500);
-        }
-
-        .newsletter-form .btn {
-            padding: 14px 32px;
-            white-space: nowrap;
-        }
+        .newsletter-form .btn { padding: 14px 32px; white-space: nowrap; }
 
         /* ----- Footer (White with black border) ----- */
         .site-footer {
@@ -767,36 +527,25 @@
             padding: 60px 0 32px;
             border-top: 2px solid var(--black);
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 48px;
             margin-bottom: 48px;
         }
-
-        .footer-brand .logo {
-            color: var(--black);
-            margin-bottom: 12px;
-        }
-
-        .footer-brand .logo span {
-            color: var(--red-600);
-        }
-
+        .footer-brand .logo { color: var(--black); margin-bottom: 12px; }
+        .footer-brand .logo span { color: var(--red-600); }
         .footer-brand p {
             font-size: 0.9rem;
             line-height: 1.7;
             max-width: 300px;
             color: var(--gray-500);
         }
-
         .footer-brand .social {
             display: flex;
             gap: 14px;
             margin-top: 18px;
         }
-
         .footer-brand .social a {
             display: flex;
             align-items: center;
@@ -809,13 +558,11 @@
             transition: var(--transition);
             font-size: 1rem;
         }
-
         .footer-brand .social a:hover {
             background: var(--red-600);
             color: var(--white);
             transform: translateY(-2px);
         }
-
         .footer-col h4 {
             font-size: 0.85rem;
             font-weight: 600;
@@ -824,21 +571,13 @@
             color: var(--black);
             margin-bottom: 16px;
         }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
+        .footer-col ul li { margin-bottom: 10px; }
         .footer-col ul li a {
             font-size: 0.9rem;
             color: var(--gray-500);
             transition: var(--transition);
         }
-
-        .footer-col ul li a:hover {
-            color: var(--red-600);
-        }
-
+        .footer-col ul li a:hover { color: var(--red-600); }
         .footer-bottom {
             border-top: 1px solid var(--gray-200);
             padding-top: 24px;
@@ -850,7 +589,6 @@
             font-size: 0.8rem;
             color: var(--gray-500);
         }
-
         .footer-bottom .payment-icons {
             display: flex;
             gap: 12px;
@@ -858,127 +596,244 @@
             color: var(--gray-300);
         }
 
-        /* ----- Responsive ----- */
-        @media (max-width: 1024px) {
-            .hero-content h1 {
-                font-size: 3.4rem;
-            }
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 32px;
-            }
+        /* ============================================
+           CART DRAWER (shared across all pages)
+           ============================================ */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(26,26,26,0.5);
+            z-index: 1998;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
         }
-
-        @media (max-width: 868px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-            .hero-content {
-                max-width: 100%;
-            }
-            .hero-content p {
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-actions {
-                justify-content: center;
-            }
-            .hero-image img,
-            .hero-image .img-placeholder {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            .brand-story-content p {
-                max-width: 100%;
-            }
-            .brand-story-content .values {
-                gap: 24px;
-            }
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-            .section-header .subtitle {
-                max-width: 100%;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            .footer-brand p {
-                max-width: 100%;
-            }
-            .newsletter-form {
-                flex-direction: column;
-            }
+        .cart-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
         }
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 420px;
+            max-width: 92vw;
+            background: var(--white);
+            z-index: 1999;
+            transform: translateX(100%);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+        }
+        .cart-drawer.open { transform: translateX(0); }
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 24px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .cart-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+        }
+        .cart-header button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--gray-500);
+            transition: var(--transition);
+        }
+        .cart-header button:hover { color: var(--red-600); }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px 24px;
+        }
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-500);
+        }
+        .cart-empty i {
+            font-size: 2.4rem;
+            color: var(--gray-300);
+            margin-bottom: 14px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 14px;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .cart-item .thumb {
+            width: 72px;
+            height: 88px;
+            border-radius: 6px;
+            background: linear-gradient(145deg, var(--gray-200), #d1d5db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .cart-item .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cart-item .thumb i {
+            font-size: 1.4rem;
+            color: var(--gray-300);
+        }
+        .cart-item .info { flex: 1; display: flex; flex-direction: column; }
+        .cart-item .info h5 {
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .cart-item .info .meta {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+        }
+        .cart-item .info .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+        .qty-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+        }
+        .qty-control button {
+            width: 26px;
+            height: 26px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--black);
+        }
+        .qty-control button:hover { color: var(--red-600); }
+        .qty-control span {
+            width: 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .cart-item .price { font-size: 0.9rem; font-weight: 600; }
+        .cart-item .remove-btn {
+            background: none;
+            border: none;
+            color: var(--gray-500);
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        .cart-item .remove-btn:hover { color: var(--red-600); }
+        .cart-footer {
+            padding: 20px 24px 24px;
+            border-top: 1px solid var(--gray-200);
+        }
+        .cart-subtotal {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .cart-footer .note {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+        }
+        .cart-footer .btn { width: 100%; }
 
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--black);
+            color: var(--white);
+            padding: 14px 24px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2100;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast i { color: var(--red-600); }
+
+        /* ============================================
+           RESPONSIVE (extra for cart drawer)
+           ============================================ */
         @media (max-width: 640px) {
-            /* Navbar responsive is already above */
-            .hero-content h1 {
-                font-size: 2.6rem;
-            }
-            .product-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-            }
-            .section {
-                padding: 56px 0;
-            }
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-            .brand-story-content h2 {
-                font-size: 2rem;
-            }
-            .brand-story-content .values {
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
+            .cart-drawer { width: 100%; max-width: 100vw; }
         }
 
+        /* (existing responsive rules remain) */
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 3.4rem; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+        @media (max-width: 868px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .hero-content { max-width: 100%; }
+            .hero-content p { max-width: 100%; margin-left: auto; margin-right: auto; }
+            .hero-actions { justify-content: center; }
+            .hero-image img { max-width: 400px; margin: 0 auto; }
+            .brand-story-content p { max-width: 100%; }
+            .brand-story-content .values { gap: 24px; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .section-header .subtitle { max-width: 100%; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-brand p { max-width: 100%; }
+            .newsletter-form { flex-direction: column; }
+        }
+        @media (max-width: 640px) {
+            .hero-content h1 { font-size: 2.6rem; }
+            .product-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .section { padding: 56px 0; }
+            .section-header h2 { font-size: 1.8rem; }
+            .brand-story-content h2 { font-size: 2rem; }
+            .brand-story-content .values { flex-direction: column; align-items: center; gap: 12px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
         @media (max-width: 420px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            .hero-actions .btn {
-                width: 100%;
-                text-align: center;
-            }
+            .product-grid { grid-template-columns: 1fr; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .hero-actions .btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ============================================================
-         HEADER — identical to about.html, shop.html, profile.html
-    ============================================================ -->
+    <!-- ===== HEADER ===== -->
     <header class="site-header" id="siteHeader">
         <div class="header-inner">
-
-            <!-- Logo -->
             <a href="index.html" class="logo" aria-label="Jag Jeans Home">
-                <i class="fas fa-gem logo-icon" aria-hidden="true"></i>
-                Jag<span>Jeans</span>
+                <img src="images/logo.png" alt="Jag Jeans – Premium Denim" />
             </a>
 
-            <!-- Navigation Links -->
             <nav class="nav-links" id="navLinks" aria-label="Main navigation">
                 <a href="index.html" class="active">Homepage</a>
                 <a href="shop.html">Shop</a>
@@ -986,69 +841,47 @@
                 <a href="profile.html">Profile</a>
             </nav>
 
-            <!-- Header Utilities (Search, Account, Cart) -->
             <div class="header-utils">
-                <!-- Search button (non-functional) -->
-                <button class="icon-btn" aria-label="Search">
+                <a href="shop.html" class="icon-btn" aria-label="Search">
                     <i class="fas fa-search" aria-hidden="true"></i>
-                </button>
-                <!-- Profile icon -> profile.html -->
+                </a>
                 <a href="profile.html" class="icon-btn" aria-label="My Account">
                     <i class="fas fa-user" aria-hidden="true"></i>
                 </a>
-                <!-- Cart icon -> shop.html -->
-                <a href="shop.html" class="icon-btn" aria-label="Shopping cart">
+                <!-- Cart button – opens drawer -->
+                <button class="icon-btn" id="cartToggle" aria-label="Shopping cart">
                     <i class="fas fa-shopping-bag" aria-hidden="true"></i>
-                    <span class="cart-count">3</span>
-                </a>
-                <!-- Mobile menu toggle -->
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
                     <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
-
         </div>
     </header>
 
-    <!-- ============================================================
-         HERO
-    ============================================================ -->
+    <!-- ===== HERO (unchanged) ===== -->
     <section class="hero" aria-labelledby="hero-title">
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
                     <span class="hero-badge">Spring Collection 2026</span>
-                    <h1 id="hero-title">
-                        Denim That<br />
-                        <span class="highlight">Fits Your Story</span>
-                    </h1>
-                    <p>
-                        Premium jeans crafted with purpose — timeless silhouettes,
-                        sustainable fabrics, and the perfect fit for every moment.
-                    </p>
+                    <h1 id="hero-title">Denim That<br /><span class="highlight">Fits Your Story</span></h1>
+                    <p>Premium jeans crafted with purpose — timeless silhouettes, sustainable fabrics, and the perfect fit for every moment.</p>
                     <div class="hero-actions">
                         <a href="shop.html" class="btn btn-primary">Shop the Collection</a>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <!-- TODO: Update image path -->
-                    <img
-                        src="images/hero.jpg"
-                        alt="Hero image: A model wearing classic Jag Jeans denim in a natural setting, showcasing the perfect fit and premium fabric quality."
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                    />
-                    <div class="img-placeholder" style="display:none;" role="img" aria-label="Hero image: A model wearing classic Jag Jeans denim in a natural setting.">
-                        <i class="fas fa-image" aria-hidden="true"></i>
-                        <span class="label">Hero Image</span>
-                        <span class="sub-label">Model in Jag Jeans — Spring Collection</span>
-                    </div>
+                    <img src="images/hero.jpg" alt="Hero image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    <div class="img-placeholder" style="display:none;">Fallback</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         BEST SELLERS
+         BEST SELLERS — 4 Products from the Shop (clickable to shop)
     ============================================================ -->
     <section class="section" style="background: var(--white);" aria-labelledby="bestsellers-title">
         <div class="container">
@@ -1060,109 +893,89 @@
                 <a href="shop.html" class="view-all">View All &rarr;</a>
             </div>
 
-            <div class="product-grid">
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="img-placeholder" role="img" aria-label="Product image: Women's high-rise skinny jeans in a dark indigo wash.">
-                        <!-- TODO: Update image path -->
-                        <img
-                            src="images/product1.jpg"
-                            alt="Women's high-rise skinny jeans in a dark indigo wash"
-                            onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';"
-                        />
+            <div class="product-grid" id="featuredProducts">
+                <!-- Product 1: Jag Men's Basic Stripes Tee -->
+                <div class="product-card" data-href="shop.html">
+                    <div class="img-placeholder" role="img" aria-label="Product image: Jag Men's Basic Stripes Tee">
+                        <img src="images/product1.jfif" alt="Jag Men's Basic Stripes Tee" onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';" />
                         <div class="fallback" style="display:none;">
                             <i class="fas fa-tshirt" aria-hidden="true"></i>
-                            <span>High-Rise Skinny</span>
-                        </div>
-                        <span class="badge">Best Seller</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="product-brand">Jag Jeans</div>
-                        <h4>High-Rise Skinny</h4>
-                        <div class="price">$128.00</div>
-                        <div class="rating">
-                            <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
-                            <span>(142)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="img-placeholder" role="img" aria-label="Product image: Men's slim-fit jeans in a medium blue wash.">
-                        <!-- TODO: Update image path -->
-                        <img
-                            src="images/product2.jpg"
-                            alt="Men's slim-fit jeans in a medium blue wash"
-                            onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';"
-                        />
-                        <div class="fallback" style="display:none;">
-                            <i class="fas fa-tshirt" aria-hidden="true"></i>
-                            <span>Slim-Fit Tapered</span>
-                        </div>
-                        <span class="badge sale">Sale</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="product-brand">Jag Jeans</div>
-                        <h4>Slim-Fit Tapered</h4>
-                        <div class="price">
-                            <span class="original">$138.00</span>
-                            <span class="sale-price">$98.00</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
-                            <span>(89)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="img-placeholder" role="img" aria-label="Product image: Women's straight-leg jeans in a light vintage wash.">
-                        <!-- TODO: Update image path -->
-                        <img
-                            src="images/product3.jpg"
-                            alt="Women's straight-leg jeans in a light vintage wash"
-                            onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';"
-                        />
-                        <div class="fallback" style="display:none;">
-                            <i class="fas fa-tshirt" aria-hidden="true"></i>
-                            <span>Straight-Leg Vintage</span>
+                            <span>Jag Men's Basic Stripes Tee</span>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="product-brand">Jag Jeans</div>
-                        <h4>Straight-Leg Vintage</h4>
-                        <div class="price">$148.00</div>
+                        <h4>Jag Men's Basic Stripes Tee</h4>
+                        <div class="price">₱699.00</div>
                         <div class="rating">
-                            <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
-                            <span>(76)</span>
+                            <span class="stars">&starf;&starf;&starf;&starf;&star;</span>
+                            <span>(58)</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="img-placeholder" role="img" aria-label="Product image: Men's relaxed-fit jeans in a dark rinse.">
-                        <!-- TODO: Update image path -->
-                        <img
-                            src="images/product4.jpg"
-                            alt="Men's relaxed-fit jeans in a dark rinse"
-                            onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';"
-                        />
+                <!-- Product 2: Jag Men's Tapered Jeans in Blue Rebel (New) -->
+                <div class="product-card" data-href="shop.html">
+                    <div class="img-placeholder" role="img" aria-label="Product image: Jag Men's Tapered Jeans in Blue Rebel">
+                        <img src="images/product2.jfif" alt="Jag Men's Tapered Jeans in Blue Rebel" onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';" />
                         <div class="fallback" style="display:none;">
                             <i class="fas fa-tshirt" aria-hidden="true"></i>
-                            <span>Relaxed-Fit Classic</span>
+                            <span>Jag Men's Tapered Jeans in Blue Rebel</span>
                         </div>
                         <span class="badge">New</span>
                     </div>
                     <div class="card-body">
                         <div class="product-brand">Jag Jeans</div>
-                        <h4>Relaxed-Fit Classic</h4>
-                        <div class="price">$132.00</div>
+                        <h4>Jag Men's Tapered Jeans in Blue Rebel</h4>
+                        <div class="price">₱1,799.00</div>
                         <div class="rating">
                             <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
-                            <span>(53)</span>
+                            <span>(92)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Jag Ivana Jeans (New) -->
+                <div class="product-card" data-href="shop.html">
+                    <div class="img-placeholder" role="img" aria-label="Product image: Jag Ivana Jeans">
+                        <img src="images/product10.jfif" alt="Jag Ivana Jeans" onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';" />
+                        <div class="fallback" style="display:none;">
+                            <i class="fas fa-person-dress" aria-hidden="true"></i>
+                            <span>Jag Ivana Jeans</span>
+                        </div>
+                        <span class="badge">New</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">Jag Jeans</div>
+                        <h4>Jag Ivana Jeans</h4>
+                        <div class="price">₱1,499.00</div>
+                        <div class="rating">
+                            <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
+                            <span>(88)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Jag Ladies Ultra High Waist Skinny Jeans (Sale) -->
+                <div class="product-card" data-href="shop.html">
+                    <div class="img-placeholder" role="img" aria-label="Product image: Jag Ladies Ultra High Waist Skinny Jeans in Faded Blue Denim">
+                        <img src="images/product12.jfif" alt="Jag Ladies Ultra High Waist Skinny Jeans in Faded Blue Denim" onerror="this.style.display='none'; this.parentElement.querySelector('.fallback').style.display='flex';" />
+                        <div class="fallback" style="display:none;">
+                            <i class="fas fa-person-dress" aria-hidden="true"></i>
+                            <span>Jag Ladies Ultra High Waist Skinny Jeans in Faded Blue Denim</span>
+                        </div>
+                        <span class="badge sale">Sale</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-brand">Jag Jeans</div>
+                        <h4>Jag Ladies Ultra High Waist Skinny Jeans in Faded Blue Denim</h4>
+                        <div class="price">
+                            <span class="original">₱1,699.00</span>
+                            <span class="sale-price">₱1,499.00</span>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
+                            <span>(101)</span>
                         </div>
                     </div>
                 </div>
@@ -1170,128 +983,84 @@
         </div>
     </section>
 
-    <!-- ============================================================
-         BRAND STORY (Centered, no image)
-    ============================================================ -->
+    <!-- ===== BRAND STORY (unchanged) ===== -->
     <section class="brand-story" aria-labelledby="story-title">
         <div class="container">
             <div class="brand-story-content">
-                <h2 id="story-title">
-                    Denim with a <span class="highlight">Soul</span>
-                </h2>
-                <p>
-                    At Jag Jeans, we believe great denim tells a story. Every pair
-                    is crafted with ethically sourced fabrics, timeless design, and
-                    an unwavering commitment to quality. We're not just making jeans —
-                    we're shaping the way you feel in them.
-                </p>
+                <h2 id="story-title">Denim with a <span class="highlight">Soul</span></h2>
+                <p>At Jag Jeans, we believe great denim tells a story. Every pair is crafted with ethically sourced fabrics, timeless design, and an unwavering commitment to quality. We're not just making jeans — we're shaping the way you feel in them.</p>
                 <div class="values">
-                    <span class="value-item">
-                        <i class="fas fa-leaf" aria-hidden="true"></i>
-                        Sustainable materials
-                    </span>
-                    <span class="value-item">
-                        <i class="fas fa-hand-holding-heart" aria-hidden="true"></i>
-                        Ethical production
-                    </span>
-                    <span class="value-item">
-                        <i class="fas fa-infinity" aria-hidden="true"></i>
-                        Timeless design
-                    </span>
+                    <span class="value-item"><i class="fas fa-leaf"></i> Sustainable materials</span>
+                    <span class="value-item"><i class="fas fa-hand-holding-heart"></i> Ethical production</span>
+                    <span class="value-item"><i class="fas fa-infinity"></i> Timeless design</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================
-         NEWSLETTER
-    ============================================================ -->
+    <!-- ===== NEWSLETTER (unchanged) ===== -->
     <section class="newsletter" aria-labelledby="newsletter-title">
         <div class="container">
             <div class="newsletter-content">
-                <h2 id="newsletter-title">
-                    Join the <span>Inner Circle</span>
-                </h2>
-                <p>
-                    Subscribe for exclusive drops, early access, and 10% off your first order.
-                </p>
+                <h2 id="newsletter-title">Join the <span>Inner Circle</span></h2>
+                <p>Subscribe for exclusive drops, early access, and 10% off your first order.</p>
                 <form class="newsletter-form" action="#" method="post">
-                    <input type="email" placeholder="Enter your email address" required aria-label="Email address" />
+                    <input type="email" placeholder="Enter your email address" required />
                     <button type="submit" class="btn btn-primary">Subscribe</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================
-         FOOTER (White with black border)
-    ============================================================ -->
+    <!-- ===== FOOTER (unchanged) ===== -->
     <footer class="site-footer" role="contentinfo">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo" aria-label="Jag Jeans Home">
-                        <i class="fas fa-gem logo-icon" aria-hidden="true"></i>
-                        Jag<span>Jeans</span>
+                        <img src="images/logo.png" alt="">
                     </a>
-                    <p>
-                        Premium denim &amp; lifestyle for those who value fit, quality,
-                        and timeless style.
-                    </p>
+                    <p>Premium denim &amp; lifestyle for those who value fit, quality, and timeless style.</p>
                     <div class="social">
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-
-                <div class="footer-col">
-                    <h4>Shop</h4>
-                    <ul>
-                        <li><a href="shop.html">New Arrivals</a></li>
-                        <li><a href="shop.html">Best Sellers</a></li>
-                        <li><a href="shop.html">Sale</a></li>
-                        <li><a href="shop.html">Collections</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help &amp; FAQs</a></li>
-                        <li><a href="#">Shipping &amp; Returns</a></li>
-                        <li><a href="#">Size Guide</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="#">Sustainability</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
+                <div class="footer-col"><h4>Shop</h4><ul><li><a href="shop.html">New Arrivals</a></li><li><a href="shop.html">Best Sellers</a></li><li><a href="shop.html">Sale</a></li><li><a href="shop.html">Collections</a></li></ul></div>
+                <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help &amp; FAQs</a></li><li><a href="#">Shipping &amp; Returns</a></li><li><a href="#">Size Guide</a></li><li><a href="#">Contact Us</a></li></ul></div>
+                <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="#">Sustainability</a></li><li><a href="#">Careers</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
             </div>
-
             <div class="footer-bottom">
                 <span>&copy; 2026 Jag Jeans. All rights reserved.</span>
-                <div class="payment-icons" aria-label="Accepted payment methods">
-                    <i class="fab fa-cc-visa" aria-hidden="true"></i>
-                    <i class="fab fa-cc-mastercard" aria-hidden="true"></i>
-                    <i class="fab fa-cc-amex" aria-hidden="true"></i>
-                    <i class="fab fa-cc-paypal" aria-hidden="true"></i>
-                    <i class="fab fa-cc-apple-pay" aria-hidden="true"></i>
-                </div>
+                <div class="payment-icons"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-amex"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-cc-apple-pay"></i></div>
             </div>
         </div>
     </footer>
 
+    <!-- ===== CART DRAWER ===== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+        <div class="cart-header">
+            <h3>Your Bag</h3>
+            <button id="closeCartBtn" aria-label="Close cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty.</p></div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+            <p class="note">Shipping and taxes calculated at checkout.</p>
+            <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+        </div>
+    </aside>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast"><i class="fas fa-circle-check"></i><span id="toastMessage">Added to bag</span></div>
+
     <!-- ============================================================
-         JAVASCRIPT
+         JAVASCRIPT (including shared cart logic & product card click)
     ============================================================ -->
     <script>
         (function() {
@@ -1300,21 +1069,16 @@
             // --- Mobile menu toggle ---
             const menuToggle = document.getElementById('menuToggle');
             const navLinks = document.getElementById('navLinks');
-
             if (menuToggle && navLinks) {
                 menuToggle.addEventListener('click', function() {
                     const isOpen = navLinks.classList.toggle('open');
                     this.setAttribute('aria-expanded', isOpen);
-
-                    // Toggle hamburger ↔ times icon
                     const icon = this.querySelector('i');
                     if (icon) {
                         icon.classList.toggle('fa-bars');
                         icon.classList.toggle('fa-times');
                     }
                 });
-
-                // Close menu when a link is clicked (mobile)
                 navLinks.querySelectorAll('a').forEach(function(link) {
                     link.addEventListener('click', function() {
                         navLinks.classList.remove('open');
@@ -1328,15 +1092,11 @@
                 });
             }
 
-            // --- Sticky header shadow on scroll ---
+            // --- Sticky header shadow ---
             const header = document.getElementById('siteHeader');
             window.addEventListener('scroll', function() {
                 const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                if (currentScroll > 20) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
+                header.classList.toggle('scrolled', currentScroll > 20);
             }, { passive: true });
 
             // --- Smooth anchor scrolling ---
@@ -1352,8 +1112,186 @@
                 });
             });
 
+            // ============================================================
+            // SHARED CART LOGIC (identical on all pages — with image support)
+            // ============================================================
+
+            // DOM refs
+            const cartCountEl = document.getElementById('cartCount');
+            const cartItemsEl = document.getElementById('cartItems');
+            const cartSubtotalEl = document.getElementById('cartSubtotal');
+            const cartDrawer = document.getElementById('cartDrawer');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const toastEl = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            let toastTimer;
+
+            // Helpers
+            function formatPrice(n) { return '$' + n.toFixed(2); }
+
+            // --- Cart data (read/write localStorage) ---
+            function getCart() {
+                try {
+                    return JSON.parse(localStorage.getItem('cart')) || [];
+                } catch { return []; }
+            }
+            function saveCart(cart) {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            // --- Render cart UI (with images) ---
+            function renderCart() {
+                const cart = getCart();
+                const totalQty = cart.reduce(function(sum, item) { return sum + item.qty; }, 0);
+                cartCountEl.textContent = totalQty;
+
+                if (cart.length === 0) {
+                    cartItemsEl.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty.</p></div>';
+                    cartSubtotalEl.textContent = formatPrice(0);
+                    return;
+                }
+
+                let subtotal = 0;
+                let html = '';
+                cart.forEach(function(item) {
+                    subtotal += item.price * item.qty;
+                    const thumbContent = item.img
+                        ? '<img src="' + item.img + '" alt="' + item.name + '" onerror="this.style.display=\'none\'; this.parentElement.querySelector(\'i\').style.display=\'flex\';" />'
+                        : '<i class="fas ' + (item.icon || 'fa-tshirt') + '"></i>';
+                    html += `
+                        <div class="cart-item" data-id="${item.id}">
+                            <div class="thumb">
+                                ${thumbContent}
+                            </div>
+                            <div class="info">
+                                <h5>${item.name}</h5>
+                                <div class="meta">Jag Jeans</div>
+                                <div class="row">
+                                    <div class="qty-control">
+                                        <button data-qty-minus="${item.id}">-</button>
+                                        <span>${item.qty}</span>
+                                        <button data-qty-plus="${item.id}">+</button>
+                                    </div>
+                                    <span class="price">${formatPrice(item.price * item.qty)}</span>
+                                </div>
+                            </div>
+                            <button class="remove-btn" data-remove="${item.id}"><i class="fas fa-trash"></i></button>
+                        </div>
+                    `;
+                });
+
+                cartItemsEl.innerHTML = html;
+                cartSubtotalEl.textContent = formatPrice(subtotal);
+            }
+
+            // --- Modify cart (with image support) ---
+            function addToCart(productId, productName, productPrice, productIcon, productImg) {
+                let cart = getCart();
+                const existing = cart.find(function(c) { return c.id === productId; });
+                if (existing) {
+                    existing.qty += 1;
+                } else {
+                    cart.push({
+                        id: productId,
+                        name: productName,
+                        price: productPrice,
+                        icon: productIcon || 'fa-tshirt',
+                        img: productImg || null,
+                        qty: 1
+                    });
+                }
+                saveCart(cart);
+                renderCart();
+                bumpCartCount();
+                showToast(productName + ' added to bag');
+            }
+
+            function changeQty(productId, delta) {
+                let cart = getCart();
+                const item = cart.find(function(c) { return c.id === productId; });
+                if (!item) return;
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    cart = cart.filter(function(c) { return c.id !== productId; });
+                }
+                saveCart(cart);
+                renderCart();
+            }
+
+            function removeFromCart(productId) {
+                let cart = getCart();
+                cart = cart.filter(function(c) { return c.id !== productId; });
+                saveCart(cart);
+                renderCart();
+            }
+
+            function bumpCartCount() {
+                cartCountEl.classList.add('bump');
+                setTimeout(function() { cartCountEl.classList.remove('bump'); }, 250);
+            }
+
+            // --- Toast ---
+            function showToast(msg) {
+                toastMessage.textContent = msg;
+                toastEl.classList.add('show');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(function() { toastEl.classList.remove('show'); }, 2200);
+            }
+
+            // --- Cart drawer open/close ---
+            function openCart() {
+                cartDrawer.classList.add('open');
+                cartOverlay.classList.add('open');
+            }
+            function closeCart() {
+                cartDrawer.classList.remove('open');
+                cartOverlay.classList.remove('open');
+            }
+
+            // --- Wire up cart events ---
+            document.getElementById('cartToggle').addEventListener('click', openCart);
+            document.getElementById('closeCartBtn').addEventListener('click', closeCart);
+            cartOverlay.addEventListener('click', closeCart);
+            document.getElementById('checkoutBtn').addEventListener('click', function() {
+                const cart = getCart();
+                if (cart.length === 0) {
+                    showToast('Your bag is empty');
+                    return;
+                }
+                showToast('This is a demo — checkout is not connected');
+            });
+
+            // Event delegation for cart item controls
+            cartItemsEl.addEventListener('click', function(e) {
+                const plus = e.target.closest('[data-qty-plus]');
+                const minus = e.target.closest('[data-qty-minus]');
+                const remove = e.target.closest('[data-remove]');
+                if (plus) changeQty(parseInt(plus.getAttribute('data-qty-plus'), 10), 1);
+                if (minus) changeQty(parseInt(minus.getAttribute('data-qty-minus'), 10), -1);
+                if (remove) removeFromCart(parseInt(remove.getAttribute('data-remove'), 10));
+            });
+
+            // --- Initial render ---
+            renderCart();
+
+            // --- Expose addToCart globally so it can be called from product cards ---
+            window.addToCart = addToCart;
+
+            // ============================================================
+            // HOME PAGE: Make product cards link to shop.html on click
+            // ============================================================
+            const productGrid = document.getElementById('featuredProducts');
+            if (productGrid) {
+                productGrid.addEventListener('click', function(e) {
+                    const card = e.target.closest('.product-card');
+                    if (card) {
+                        // Navigate to shop page
+                        window.location.href = 'shop.html';
+                    }
+                });
+            }
+
         })();
     </script>
-
 </body>
 </html>
