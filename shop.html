@@ -11,10 +11,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /* ============================================
-           FULL CSS (reset, navbar, shop, filters, cart, footer)
-           ============================================ */
-
         /* reset & base */
         *,
         *::before,
@@ -75,7 +71,7 @@
             padding: 0 24px;
         }
 
-        /* ----- NAVBAR (unified with image logo) ----- */
+        /* ----- NAVBAR----- */
         .site-header {
             position: fixed;
             top: 0;
@@ -462,7 +458,7 @@
             cursor: pointer;
         }
 
-        /* ----- Shop Layout (sidebar + grid) ----- */
+        /* ----- Shop Layout ----- */
         .shop-layout {
             display: grid;
             grid-template-columns: 240px 1fr;
@@ -836,7 +832,7 @@
             padding: 48px 0 0;
         }
 
-        /* ----- Cart drawer (shared) ----- */
+        /* ----- Cart drawer----- */
         .cart-overlay {
             position: fixed;
             inset: 0;
@@ -1265,7 +1261,7 @@
 <body>
 
     <!-- ============================================================
-         HEADER — with cart toggle button
+         HEADER 
     ============================================================ -->
     <header class="site-header" id="siteHeader">
         <div class="header-inner">
@@ -1547,15 +1543,12 @@
         <span id="toastMessage">Added to bag</span>
     </div>
 
-    <!-- ============================================================
-         JAVASCRIPT — shared cart + full shop logic (merged with product data)
-    ============================================================ -->
     <script>
         (function() {
             'use strict';
 
             // ============================================================
-            // SHARED CART LOGIC (identical across all pages)
+            // SHARED CART LOGIC 
             // ============================================================
 
             // DOM refs
@@ -1670,31 +1663,31 @@
                 cartItemsEl.innerHTML = html;
                 cartSubtotalEl.textContent = formatPrice(subtotal);
             }
-window.addToCart = function(productId, productName, productPrice, productIcon, productImg) {
-      let cart = getCart();
-      const existing = cart.find(function(c) { return c.id === productId; });
-      if (existing) {
-        existing.qty += 1;
-        if (!existing.img && productImg) existing.img = productImg;
-      } else {
-        cart.push({ id: productId, name: productName, price: productPrice, icon: productIcon || 'fa-tshirt', img: productImg || '', qty: 1 });
-      }
-      saveCart(cart);
-      renderCart();
-      bumpCartCount();
-      showToast(productName + ' added to bag');
-    };
-function changeQty(productId, delta) {
-                let cart = getCart();
-                const item = cart.find(function(c) { return c.id === productId; });
-                if (!item) return;
-                item.qty += delta;
-                if (item.qty <= 0) {
-                    cart = cart.filter(function(c) { return c.id !== productId; });
-                }
-                saveCart(cart);
-                renderCart();
-            }
+            window.addToCart = function(productId, productName, productPrice, productIcon, productImg) {
+                  let cart = getCart();
+                  const existing = cart.find(function(c) { return c.id === productId; });
+                  if (existing) {
+                    existing.qty += 1;
+                    if (!existing.img && productImg) existing.img = productImg;
+                  } else {
+                    cart.push({ id: productId, name: productName, price: productPrice, icon: productIcon || 'fa-tshirt', img: productImg || '', qty: 1 });
+                  }
+                  saveCart(cart);
+                  renderCart();
+                  bumpCartCount();
+                  showToast(productName + ' added to bag');
+                };
+            function changeQty(productId, delta) {
+                            let cart = getCart();
+                            const item = cart.find(function(c) { return c.id === productId; });
+                            if (!item) return;
+                            item.qty += delta;
+                            if (item.qty <= 0) {
+                                cart = cart.filter(function(c) { return c.id !== productId; });
+                            }
+                            saveCart(cart);
+                            renderCart();
+                        }
 
             function removeFromCart(productId) {
                 let cart = getCart();
@@ -1761,10 +1754,9 @@ function changeQty(productId, delta) {
             renderCart();
 
             // ============================================================
-            // SHOP PRODUCTS & FILTER LOGIC (merged with updated product data)
+            // SHOP PRODUCTS & FILTER LOGIC 
             // ============================================================
 
-            /* product data – updated with .jfif images and PHP prices */
             const PRODUCTS = [
                 { id: 1, name: "Jag Men's Basic Stripes Tee", category: 'men', fit: 'straight', wash: 'light', price: 699, originalPrice: null, rating: 4.4, reviews: 58, isNew: false, onSale: false, img: 'images/product1.jfif', icon: 'fa-tshirt' },
                 { id: 2, name: "Jag Men's Tapered Jeans in Blue Rebel", category: 'men', fit: 'slim', wash: 'light', price: 1799, originalPrice: null, rating: 4.7, reviews: 92, isNew: true, onSale: false, img: 'images/product2.jfif', icon: 'fa-tshirt' },
