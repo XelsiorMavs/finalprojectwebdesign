@@ -62,7 +62,7 @@
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
         /* ============================================
-           HEADER / NAVBAR (unified, with image logo)
+           HEADER / NAVBAR 
         ============================================ */
         .site-header {
             position: fixed;
@@ -238,7 +238,7 @@
         }
 
         /* ============================================
-           PROFILE PAGE STYLES (original, unchanged)
+           PROFILE PAGE STYLES 
         ============================================ */
         .profile-page {
             max-width: 1280px;
@@ -968,7 +968,7 @@
             color: var(--gray-300);
         }
         /* ============================================
-           CART DRAWER (shared)
+           CART DRAWER
         ============================================ */
         .cart-overlay {
             position: fixed;
@@ -1164,7 +1164,7 @@
         .toast i { color: var(--red-600); }
 
         /* ============================================
-           RESPONSIVE (profile + cart)
+           RESPONSIVE
         ============================================ */
         @media (max-width: 1024px) {
             .profile-page { grid-template-columns: 200px 1fr; gap: 30px; }
@@ -1297,7 +1297,7 @@
 <body>
 
     <!-- ============================================================
-         HEADER — with cart toggle button
+         HEADER 
     ============================================================ -->
     <header class="site-header" id="siteHeader">
         <div class="header-inner">
@@ -1332,7 +1332,7 @@
     </header>
 
     <!-- ============================================================
-         PROFILE PAGE CONTENT (unchanged)
+         PROFILE PAGE CONTENT 
     ============================================================ -->
     <section class="profile-page">
 
@@ -1700,10 +1700,9 @@
     </div>
 
     <!-- ============================================================
-         JAVASCRIPT — profile logic + shared cart
+         JAVASCRIPT 
     ============================================================ -->
     <script>
-        // --- Shared Cart Logic (identical across all pages) ---
         (function() {
             'use strict';
 
@@ -2485,7 +2484,7 @@
             }
         });
 
-        // --- Header / menu toggle (already handled in shared cart IIFE, but we add the rest) ---
+        // --- Header / menu toggle  ---
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         if (menuToggle && navLinks) {
