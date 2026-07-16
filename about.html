@@ -13,7 +13,7 @@
 
   <style>
     /* ============================================
-       FULL CSS (reset, navbar, cart, footer, about)
+       FULL CSS 
     ============================================ */
 
     *,
@@ -66,7 +66,7 @@
       padding: 0 24px;
     }
 
-    /* ----- NAVBAR (unified) ----- */
+    /* ----- NAVBAR ----- */
     .site-header {
       position: fixed;
       top: 0;
@@ -195,7 +195,7 @@
       .logo img { height: 32px; }
     }
 
-    /* ----- Buttons (reused) ----- */
+    /* ----- Buttons ----- */
     .btn {
       display: inline-block;
       padding: 14px 36px;
@@ -363,7 +363,7 @@
       line-height: 1.08;
     }
 
-    /* ----- Cart drawer (shared) ----- */
+    /* ----- Cart drawer ----- */
     .cart-overlay {
       position: fixed;
       inset: 0;
@@ -557,7 +557,7 @@
     }
     .toast i { color: var(--red-600); }
 
-    /* ----- Footer (unified with index/shop) ----- */
+    /* ----- Footer  ----- */
     .site-footer {
       background: var(--white);
       color: var(--black);
@@ -636,7 +636,7 @@
       color: var(--gray-300);
     }
 
-    /* ----- Responsive (about + cart) ----- */
+    /* ----- Responsive  ----- */
     @media (max-width: 800px) {
       .story-grid,
       .origin-inner,
@@ -656,7 +656,7 @@
 <body>
 
   <!-- ============================================================
-       HEADER — with cart toggle
+       HEADER 
   ============================================================ -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
@@ -691,7 +691,7 @@
   </header>
 
   <!-- ============================================================
-       ABOUT PAGE CONTENT (original, unchanged)
+       ABOUT PAGE CONTENT 
   ============================================================ -->
   <main>
     <figure class="hero-media">
@@ -777,7 +777,7 @@
   </main>
 
   <!-- ============================================================
-       FOOTER (unified)
+       FOOTER 
   ============================================================ -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
@@ -866,9 +866,7 @@
     <span id="toastMessage">Added to bag</span>
   </div>
 
-  <!-- ============================================================
-       JAVASCRIPT — shared cart + header behavior
-  ============================================================ -->
+
   <script>
     (function() {
       'use strict';
@@ -921,7 +919,7 @@
       });
 
       // ============================================================
-      // SHARED CART LOGIC (identical across all pages)
+      // SHARED CART LOGIC 
       // ============================================================
 
       // DOM refs
